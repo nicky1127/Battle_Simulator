@@ -10,14 +10,10 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
     display: 'flex',
     paddingTop: '80px',
-    // justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'column'
-    // border: '10px solid black',
-    // boxSizing: 'border-box',
-    // borderRadius: '25px'
   },
-  name:{
+  name: {
     'font-family': 'Ranchers, cursive'
   }
 }));
@@ -25,13 +21,15 @@ const useStyles = makeStyles((theme) => ({
 const CharacterGrid = (props) => {
   const { healthBar, image, name } = props;
 
-  const classes = useStyles();
+  const classes = useStyles({ ...props });
 
   return (
     <Paper id={`CharacterGrid_${name}`} className={clsx('CharacterGrid', classes.root)}>
       {healthBar}
       {image}
-      <Typography variant='h2' className={classes.name} >{name}</Typography>
+      <Typography variant="h2" className={classes.name}>
+        {name}
+      </Typography>
     </Paper>
   );
 };

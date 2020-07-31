@@ -18,7 +18,7 @@ const Monster = (props) => {
   const healthBar = <HealthBar max={100} current={30} />;
   const image = <CharacterImage src="/images/godzilla.jpg" name="Monster" position='50% 50%'/>;
 
-  return <CharacterGrid healthBar={healthBar} image={image} name="Monster" />;
+  return <CharacterGrid healthBar={healthBar} image={image} name="Monster"/>;
 };
 
 const mapStateToProps = (state) => {

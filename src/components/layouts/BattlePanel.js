@@ -20,7 +20,7 @@ const BattlePanel = (props) => {
   const classes = useStyles();
 
   const player = <ChracterPanel character={<Pikachu />} />;
-  const monster = <ChracterPanel character={<Monster />} />;
+  const monster = <ChracterPanel character={<Monster />} position="right" />;
 
   return (
     <Box id="battlePanel" className={classes.root}>

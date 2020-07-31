@@ -12,14 +12,15 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: '25px',
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    marginLeft: (props) => props.position === 'right' && 'auto'
   }
 }));
 
 const MainContainer = (props) => {
   const { character } = props;
 
-  const classes = useStyles();
+  const classes = useStyles({ ...props });
 
   return (
     <Box id="characterPanel" className={classes.root}>
