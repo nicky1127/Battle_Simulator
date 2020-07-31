@@ -8,7 +8,9 @@ import {
   playerRollingDiceStart,
   playerRollingDiceFinish,
   monsterRollingDiceStart,
-  monsterRollingDiceFinish
+  monsterRollingDiceFinish,
+  displayPlayerTotalScore,
+  displayMonsterTotalScore
 } from 'redux/_actions/dice';
 
 const useStyles = makeStyles((theme) => ({
@@ -42,11 +44,13 @@ const AttackButton = (props) => {
     const elementPlayer = document.getElementById('diceContainer_Pikachu');
     const optionsPlayer = {
       element: elementPlayer, // element to display the animated dice in.
-      numberOfDice: 2, // number of dice to use
+      numberOfDice: 2, // number of dice to use,
       callback: (res) => {
         console.log('res player', res);
         const sum = res.reduce((a, b) => a + b, 0);
         props.playerRollingDiceFinish(sum);
+        setTimeout(() => props.displayPlayerTotalScore(true), 200);
+        setTimeout(() => props.displayPlayerTotalScore(false), 1500);
       }
     };
     diceRoller(optionsPlayer);
@@ -61,6 +65,8 @@ const AttackButton = (props) => {
         console.log('res monnster', res);
         const sum = res.reduce((a, b) => a + b, 0);
         props.monsterRollingDiceFinish(sum);
+        setTimeout(() => props.displayMonsterTotalScore(true), 200);
+        setTimeout(() => props.displayMonsterTotalScore(false), 1500);
       }
     };
     diceRoller(optionsMonster);
@@ -96,7 +102,9 @@ const ConnectedAttackButton = connect(mapStateToProps, {
   playerRollingDiceStart,
   playerRollingDiceFinish,
   monsterRollingDiceStart,
-  monsterRollingDiceFinish
+  monsterRollingDiceFinish,
+  displayPlayerTotalScore,
+  displayMonsterTotalScore
 })(AttackButton);
 
 export default ConnectedAttackButton;

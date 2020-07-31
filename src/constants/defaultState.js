@@ -3,7 +3,9 @@ const data = {
     playerScore: 0,
     monsterScore: 0,
     playerRolling: false,
-    monsterRolling: false
+    monsterRolling: false,
+    displayPlayerScore: false,
+    displayMonsterScore: false
   }
 };
 

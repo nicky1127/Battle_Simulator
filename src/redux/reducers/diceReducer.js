@@ -10,7 +10,7 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   if (action.type === types.PLAYER_ROLLING_DICE_START) {
     return { ...state, playerRolling: true };
-    
+
   }
   if (action.type === types.PLAYER_ROLLING_DICE_FINISH) {
     return { ...state, playerRolling: false, playerScore: action.payload };
@@ -22,6 +22,14 @@ const reducer = (state = initialState, action) => {
 
   if (action.type === types.MONSTER_ROLLING_DICE_FINISH) {
     return { ...state, monsterRolling: false, monsterScore: action.payload };
+  }
+
+  if (action.type === types.DISPLAY_PLAYER_TOTAL_SCORE) {
+    return { ...state, displayPlayerScore: action.payload };
+  }
+
+  if (action.type === types.DISPLAY_MONSTER_TOTAL_SCORE) {
+    return { ...state, displayMonsterScore: action.payload };
   }
 
   return state;

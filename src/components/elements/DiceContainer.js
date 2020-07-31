@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box, Paper, Typography, Zoom } from '@material-ui/core';
@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     width: '200px',
     height: '100px',
-    backgroundColor: 'red',
+    backgroundColor: '#ffeb3b',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
@@ -25,13 +25,18 @@ const useStyles = makeStyles((theme) => ({
   },
   text: {
     textAlign: 'center',
-    display:'block'
+    display: 'block'
   }
 }));
 
 const DiceContainer = (props) => {
   const classes = useStyles({ ...props });
-  const { character, score } = props;
+  const { character, score, isRolling, displayScore } = props;
+  const [checked, setChecked] = useState(false);
+
+  useEffect(() => {
+    displayScore ? setChecked(true) : setChecked(false);
+  }, [displayScore]);
 
   return (
     <Box
@@ -39,7 +44,7 @@ const DiceContainer = (props) => {
       elevation={5}
       className={clsx('diceContainer', classes.root)}
     >
-      <Zoom in={true}>
+      <Zoom in={checked}>
         <Box className={classes.paper}>
           <Typography className={classes.text} variant="h6">
             Total Power
@@ -55,10 +60,20 @@ const DiceContainer = (props) => {
 
 const mapStateToProps = (state, ownProps) => {
   const {
-    diceReducer: { playerScore, monsterScore }
+    diceReducer: {
+      playerScore,
+      monsterScore,
+      playerRolling,
+      monsterRolling,
+      displayPlayerScore,
+      displayMonsterScore
+    }
   } = state;
 
-  return { score: ownProps.role === 'player' ? playerScore : monsterScore };
+  return {
+    score: ownProps.role === 'player' ? playerScore : monsterScore,
+    displayScore: ownProps.role === 'player' ? displayPlayerScore : displayMonsterScore
+  };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {

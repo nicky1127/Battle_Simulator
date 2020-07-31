@@ -20,6 +20,16 @@ export const monsterRollingDiceFinish = (payload) => {
   return obj;
 };
 
+export const displayPlayerTotalScore = (payload) => {
+  const obj = { type: types.DISPLAY_PLAYER_TOTAL_SCORE, payload };
+  return obj;
+};
+
+export const displayMonsterTotalScore = (payload) => {
+  const obj = { type: types.DISPLAY_MONSTER_TOTAL_SCORE, payload };
+  return obj;
+};
+
 const actions = {
   playerRollingDiceStart,
   playerRollingDiceFinish,
