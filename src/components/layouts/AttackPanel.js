@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Box } from '@material-ui/core';
 import { connect } from 'react-redux';
 import AttackButton from 'components/elements/AttackButton';
+import Attacktext from 'components/elements/AttackText';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -12,8 +13,9 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'flex-end'
-  }
+    justifyContent: 'flex-start',
+    paddingTop:'200px'
+  },
 }));
 
 const BattlePanel = (props) => {
@@ -23,6 +25,7 @@ const BattlePanel = (props) => {
 
   return (
     <Box id="battackPanel" className={classes.root}>
+      <Attacktext/>
       {!payerRolling && !monsterRolling && <AttackButton />}
     </Box>
   );

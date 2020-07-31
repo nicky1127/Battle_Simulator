@@ -23,7 +23,6 @@ const MainContainer = (props) => {
   return (
     <main id="mainContainer" className={classes.root}>
       <Screen />
-      {/* <BattlePanel /> */}
     </main>
   );
 };

@@ -6,7 +6,7 @@ import BattlePanel from 'components/layouts/BattlePanel';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: '1500px',
+    width: '1600px',
     height: '700px',
     border: '10px solid black',
     boxSizing: 'border-box',
