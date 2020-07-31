@@ -10,6 +10,16 @@ export const setMonsterHealth = (payload) => {
   return obj;
 };
 
+export const setPlayerAttack = (payload) => {
+  const obj = { type: types.SET_PLAYER_ATTACK, payload };
+  return obj;
+};
+
+export const setMonsterAttack = (payload) => {
+  const obj = { type: types.SET_MONSTER_ATTACK, payload };
+  return obj;
+};
+
 const actions = {
   setPlayerHealth,
   setMonsterHealth

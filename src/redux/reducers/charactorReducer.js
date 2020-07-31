@@ -16,6 +16,15 @@ const reducer = (state = initialState, action) => {
     return { ...state, monsterHealth: action.payload };
   }
 
+  if (action.type === types.SET_PLAYER_ATTACK) {
+    return { ...state, playerAttack: action.payload };
+  }
+
+  if (action.type === types.SET_MONSTER_ATTACK) {
+    return { ...state, monsterAttack: action.payload };
+  }
+
+
   return state;
 };
 

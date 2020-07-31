@@ -14,8 +14,10 @@ const data = {
   characterReducer:{
     playerChrCode:'pikachu',
     playerHealth:70,
+    playAttack:false,
     monsterChrCode:'monster',
-    monsterHealth:90
+    monsterHealth:90,
+    monsterAttack:false
   }
 };
 
