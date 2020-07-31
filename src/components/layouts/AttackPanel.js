@@ -19,24 +19,24 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const BattlePanel = (props) => {
-  const { payerRolling, monsterRolling } = props;
+  const { displayAttackButton } = props;
 
   const classes = useStyles();
 
   return (
     <Box id="battackPanel" className={classes.root}>
       <Attacktext/>
-      {!payerRolling && !monsterRolling && <AttackButton />}
+      {displayAttackButton && <AttackButton />}
     </Box>
   );
 };
 
 const mapStateToProps = (state) => {
   const {
-    diceReducer: { payerRolling, monsterRolling }
+    layoutReducer: {displayAttackButton}
   } = state;
 
-  return { payerRolling, monsterRolling };
+  return { displayAttackButton };
 };
 
 const ConnectedBattlePanel = connect(mapStateToProps)(BattlePanel);

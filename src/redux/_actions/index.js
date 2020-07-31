@@ -1,7 +1,9 @@
 import dice from './dice';
+import layout from './layout';
 
 const data = {
-  dice
+  dice,
+  layout
 };
 
 export default data;

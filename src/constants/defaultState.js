@@ -6,6 +6,10 @@ const data = {
     monsterRolling: false,
     displayPlayerScore: false,
     displayMonsterScore: false
+  },
+  layoutReducer: {
+    displayAttackText: false,
+    displayAttackButton: true
   }
 };
 

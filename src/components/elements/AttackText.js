@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box, Paper, Typography, Fade } from '@material-ui/core';
@@ -21,10 +21,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Attacktext = (props) => {
-  const { playerScore, monsterScore } = props;
+  const { playerScore, monsterScore, displayAttackText } = props;
 
   const classes = useStyles({ ...props });
   const [checked, setChecked] = useState(false);
+
+  useEffect(() => {
+    displayAttackText ? setChecked(true) : setChecked(false);
+  }, [displayAttackText]);
 
   const scoreDiff = playerScore - monsterScore;
 
@@ -56,10 +60,11 @@ const mapStateToProps = (state) => {
       monsterRolling,
       displayPlayerScore,
       displayMonsterScore
-    }
+    },
+    layoutReducer: { displayAttackText }
   } = state;
 
-  return { playerScore, monsterScore };
+  return { playerScore, monsterScore, displayAttackText };
 };
 
 const ConnectedAttacktext = connect(mapStateToProps)(Attacktext);

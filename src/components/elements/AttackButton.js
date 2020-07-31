@@ -12,6 +12,7 @@ import {
   displayPlayerTotalScore,
   displayMonsterTotalScore
 } from 'redux/_actions/dice';
+import { displayAttackText, displayAttackBtn } from 'redux/_actions/layout';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -37,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const AttackButton = (props) => {
-  const { payerRolling, monsterRolling } = props;
+  const { payerRolling, monsterRolling, displayAttackButton } = props;
   const classes = useStyles({ ...props });
 
   function rollDicePlayer() {
@@ -74,6 +75,7 @@ const AttackButton = (props) => {
 
   function rollDice() {
     if (!payerRolling && !monsterRolling) {
+      props.displayAttackBtn(false);
       props.playerRollingDiceStart();
       props.monsterRollingDiceStart();
       rollDicePlayer();
@@ -92,10 +94,11 @@ const AttackButton = (props) => {
 
 const mapStateToProps = (state) => {
   const {
-    diceReducer: { payerRolling, monsterRolling }
+    diceReducer: { payerRolling, monsterRolling },
+    layoutReducer: { displayAttackButton }
   } = state;
 
-  return { payerRolling, monsterRolling };
+  return { payerRolling, monsterRolling, displayAttackButton };
 };
 
 const ConnectedAttackButton = connect(mapStateToProps, {
@@ -104,7 +107,9 @@ const ConnectedAttackButton = connect(mapStateToProps, {
   monsterRollingDiceStart,
   monsterRollingDiceFinish,
   displayPlayerTotalScore,
-  displayMonsterTotalScore
+  displayMonsterTotalScore,
+  displayAttackText,
+  displayAttackBtn
 })(AttackButton);
 
 export default ConnectedAttackButton;
