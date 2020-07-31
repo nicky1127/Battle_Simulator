@@ -8,16 +8,20 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-  if (action.type === types.PARSE_DESKTOP_URL_START) {
-    return { ...state, urlObj: null, parsingURL: true, parsingSuccURL: false };
+  if (action.type === types.PLAYER_ROLLING_DICE_START) {
+    return { ...state, playerRolling: true };
+    
+  }
+  if (action.type === types.PLAYER_ROLLING_DICE_FINISH) {
+    return { ...state, playerRolling: false, playerScore: action.payload };
   }
 
-  if (action.type === types.PARSE_DESKTOP_URL_SUCCESS) {
-    return { ...state, urlObj: action.payload, parsingURL: false, parsingSuccURL: true };
+  if (action.type === types.MONSTER_ROLLING_DICE_START) {
+    return { ...state, monsterRolling: true };
   }
 
-  if (action.type === types.PARSE_DESKTOP_URL_FAILURE) {
-    return { ...state, parsingURL: false, parsingSuccURL: false };
+  if (action.type === types.MONSTER_ROLLING_DICE_FINISH) {
+    return { ...state, monsterRolling: false, monsterScore: action.payload };
   }
 
   return state;

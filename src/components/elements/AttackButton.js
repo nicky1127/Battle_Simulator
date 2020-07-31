@@ -4,6 +4,12 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Box, Paper, Typography } from '@material-ui/core';
 import { connect } from 'react-redux';
 import diceRoller from 'dice-roller-3d';
+import {
+  playerRollingDiceStart,
+  playerRollingDiceFinish,
+  monsterRollingDiceStart,
+  monsterRollingDiceFinish
+} from 'redux/_actions/dice';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,11 +27,6 @@ const useStyles = makeStyles((theme) => ({
       cursor: ' pointer',
       backgroundColor: '#039be5'
     }
-    // backgroundImage: (props) => `url(${props.src})`,
-    // backgroundRepeat: 'no-repeat',
-    // backgroundSize: 'cover',
-    // backgroundPosition: (props) => props.position,
-    // margin: '50px'
   },
   text: {
     color: '#fff',
@@ -43,6 +44,8 @@ const AttackButton = (props) => {
       numberOfDice: 2, // number of dice to use
       callback: (res) => {
         console.log('res player', res);
+        const sum = res.reduce((a, b) => a + b, 0);
+        props.playerRollingDiceFinish(sum);
       }
     };
     diceRoller(optionsPlayer);
@@ -55,12 +58,16 @@ const AttackButton = (props) => {
       numberOfDice: 2, // number of dice to use
       callback: (res) => {
         console.log('res monnster', res);
+        const sum = res.reduce((a, b) => a + b, 0);
+        props.monsterRollingDiceFinish(sum);
       }
     };
     diceRoller(optionsMonster);
   }
 
   function rollDice() {
+    props.playerRollingDiceStart();
+    props.monsterRollingDiceStart();
     rollDicePlayer();
     setTimeout(() => rollDiceMonster(), 3000);
   }
@@ -80,10 +87,11 @@ const mapStateToProps = (state) => {
   return {};
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-  return {};
-};
-
-const ConnectedAttackButton = connect(mapStateToProps, mapDispatchToProps)(AttackButton);
+const ConnectedAttackButton = connect(mapStateToProps, {
+  playerRollingDiceStart,
+  playerRollingDiceFinish,
+  monsterRollingDiceStart,
+  monsterRollingDiceFinish
+})(AttackButton);
 
 export default ConnectedAttackButton;
