@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box } from '@material-ui/core';
 import { connect } from 'react-redux';
+import DiceContainer from 'components/elements/DiceContainer';
+import diceRoller from 'dice-roller-3d';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -11,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
     boxSizing: 'border-box',
     borderRadius: '25px',
     display: 'flex',
+    flexDirection: (props) => (props.position === 'right' ? 'row-reverse' : 'row'),
     justifyContent: (props) => (props.position === 'right' ? 'flex-end' : 'flex-start'),
     alignItems: 'center',
     marginLeft: (props) => props.position === 'right' && 'auto'
@@ -18,13 +21,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const MainContainer = (props) => {
-  const { character } = props;
+  const { character, name } = props;
 
   const classes = useStyles({ ...props });
 
   return (
     <Box id="characterPanel" className={classes.root}>
       {character}
+      <DiceContainer character={name} />
     </Box>
   );
 };
