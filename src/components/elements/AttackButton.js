@@ -35,6 +35,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const AttackButton = (props) => {
+  const { payerRolling, monsterRolling } = props;
   const classes = useStyles({ ...props });
 
   function rollDicePlayer() {
@@ -66,10 +67,12 @@ const AttackButton = (props) => {
   }
 
   function rollDice() {
-    props.playerRollingDiceStart();
-    props.monsterRollingDiceStart();
-    rollDicePlayer();
-    setTimeout(() => rollDiceMonster(), 3000);
+    if (!payerRolling && !monsterRolling) {
+      props.playerRollingDiceStart();
+      props.monsterRollingDiceStart();
+      rollDicePlayer();
+      setTimeout(() => rollDiceMonster(), 3000);
+    }
   }
 
   return (
@@ -82,9 +85,11 @@ const AttackButton = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  const {} = state;
+  const {
+    diceReducer: { payerRolling, monsterRolling }
+  } = state;
 
-  return {};
+  return { payerRolling, monsterRolling };
 };
 
 const ConnectedAttackButton = connect(mapStateToProps, {

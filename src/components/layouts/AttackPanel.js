@@ -12,32 +12,30 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent:'flex-end'
+    justifyContent: 'flex-end'
   }
 }));
 
 const BattlePanel = (props) => {
-  const {} = props;
+  const { payerRolling, monsterRolling } = props;
 
   const classes = useStyles();
 
   return (
     <Box id="battackPanel" className={classes.root}>
-      <AttackButton />
+      {!payerRolling && !monsterRolling && <AttackButton />}
     </Box>
   );
 };
 
 const mapStateToProps = (state) => {
-  const {} = state;
+  const {
+    diceReducer: { payerRolling, monsterRolling }
+  } = state;
 
-  return {};
+  return { payerRolling, monsterRolling };
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-  return {};
-};
-
-const ConnectedBattlePanel = connect(mapStateToProps, mapDispatchToProps)(BattlePanel);
+const ConnectedBattlePanel = connect(mapStateToProps)(BattlePanel);
 
 export default ConnectedBattlePanel;
