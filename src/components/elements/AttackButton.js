@@ -8,10 +8,9 @@ import {
   playerRollingDiceStart,
   playerRollingDiceFinish,
   monsterRollingDiceStart,
-  monsterRollingDiceFinish,
-  displayMonsterTotalScore
+  monsterRollingDiceFinish
 } from 'redux/_actions/dice';
-import { displayAttackText, displayAttackBtn } from 'redux/_actions/layout';
+import { displayAttackBtn } from 'redux/_actions/layout';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -63,8 +62,6 @@ const AttackButton = (props) => {
         console.log('res monnster', res);
         const sum = res.reduce((a, b) => a + b, 0);
         props.monsterRollingDiceFinish(sum);
-        setTimeout(() => props.displayMonsterTotalScore(true), 200);
-        setTimeout(() => props.displayMonsterTotalScore(false), 1500);
       }
     };
     diceRoller(optionsMonster);
@@ -103,8 +100,6 @@ const ConnectedAttackButton = connect(mapStateToProps, {
   playerRollingDiceFinish,
   monsterRollingDiceStart,
   monsterRollingDiceFinish,
-  displayMonsterTotalScore,
-  displayAttackText,
   displayAttackBtn
 })(AttackButton);
 

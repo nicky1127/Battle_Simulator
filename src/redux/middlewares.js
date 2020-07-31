@@ -9,3 +9,15 @@ export const endPlayerRollingProcess = (store) => (next) => (action) => {
   }
   return next(action);
 };
+
+export const endMonsterRollingProcess = (store) => (next) => (action) => {
+  const { dispatch } = store;
+  if (action.type === dice_types.MONSTER_ROLLING_DICE_FINISH) {
+    setTimeout(() => dispatch(actions.dice.displayMonsterTotalScore(true)), 200);
+    setTimeout(() => dispatch(actions.dice.displayMonsterTotalScore(false)), 1500);
+    setTimeout(() => dispatch(actions.layout.displayAttackText(true)), 1500);
+    setTimeout(() => dispatch(actions.layout.displayAttackText(false)), 2500);
+    setTimeout(() => dispatch(actions.layout.displayAttackBtn(true)), 2500);
+  }
+  return next(action);
+};
