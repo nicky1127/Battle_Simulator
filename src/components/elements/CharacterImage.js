@@ -14,11 +14,8 @@ const useStyles = makeStyles((theme) => ({
     backgroundImage: (props) => `url(${props.src})`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
-    backgroundPosition: '50% 0'
-  },
-  characterImage: {
-    width: '100%',
-    height: '100%'
+    backgroundPosition: '50% 0',
+    margin: '50px'
   }
 }));
 
@@ -32,9 +29,7 @@ const CharacterImage = (props) => {
       id={`characterImage_${name}`}
       elevation={5}
       className={clsx('characterImage', classes.root)}
-    >
-      {/* <img src={src} className={classes.characterImage} alt={`Character ${name}`} /> */}
-    </Paper>
+    ></Paper>
   );
 };
 
