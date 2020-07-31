@@ -7,10 +7,14 @@ import { connect } from 'react-redux';
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '250px',
-    height: '250px'
-    // border: '10px solid black',
-    // boxSizing: 'border-box',
-    // borderRadius: '25px'
+    height: '250px',
+    border: '10px solid #ddd',
+    boxSizing: 'border-box',
+    borderRadius: '50%',
+    backgroundImage: (props) => `url(${props.src})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    backgroundPosition: '50% 0'
   },
   characterImage: {
     width: '100%',
@@ -21,11 +25,15 @@ const useStyles = makeStyles((theme) => ({
 const CharacterImage = (props) => {
   const { src, name } = props;
 
-  const classes = useStyles();
+  const classes = useStyles({ ...props });
 
   return (
-    <Paper id={`characterImage_${name}`} elevation={5} className={clsx('characterImage', classes.root)}>
-      <img src={src} className={classes.characterImage} alt={`Character ${name}`} />
+    <Paper
+      id={`characterImage_${name}`}
+      elevation={5}
+      className={clsx('characterImage', classes.root)}
+    >
+      {/* <img src={src} className={classes.characterImage} alt={`Character ${name}`} /> */}
     </Paper>
   );
 };
