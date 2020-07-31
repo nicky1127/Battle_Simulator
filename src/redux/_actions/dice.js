@@ -34,7 +34,9 @@ const actions = {
   playerRollingDiceStart,
   playerRollingDiceFinish,
   monsterRollingDiceStart,
-  monsterRollingDiceFinish
+  monsterRollingDiceFinish,
+  displayPlayerTotalScore,
+  displayMonsterTotalScore
 };
 
 export default actions;
