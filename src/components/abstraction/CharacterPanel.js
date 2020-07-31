@@ -5,13 +5,13 @@ import { connect } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: '500px',
+    width: '600px',
     height: '100%',
     border: '10px solid black',
     boxSizing: 'border-box',
     borderRadius: '25px',
     display: 'flex',
-    justifyContent: 'center',
+    justifyContent: (props) => (props.position === 'right' ? 'flex-end' : 'flex-start'),
     alignItems: 'center',
     marginLeft: (props) => props.position === 'right' && 'auto'
   }

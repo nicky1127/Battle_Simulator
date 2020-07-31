@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import ChracterPanel from 'components/abstraction/CharacterPanel';
 import Pikachu from 'components/characters/Pikachu';
 import Monster from 'components/characters/Monster';
+import AttackPanel from 'components/layouts/AttackPanel';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,6 +26,7 @@ const BattlePanel = (props) => {
   return (
     <Box id="battlePanel" className={classes.root}>
       {player}
+      <AttackPanel />
       {monster}
     </Box>
   );
