@@ -21,14 +21,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const MainContainer = (props) => {
-  const { character, name } = props;
+  const { character, name, role } = props;
 
   const classes = useStyles({ ...props });
 
   return (
     <Box id="characterPanel" className={classes.root}>
       {character}
-      <DiceContainer character={name} />
+      <DiceContainer character={name} role={role} />
     </Box>
   );
 };
