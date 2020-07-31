@@ -36,35 +36,13 @@ const useStyles = makeStyles((theme) => ({
 const AttackButton = (props) => {
   const classes = useStyles({ ...props });
 
-  // function rollDice() {
-  //   const elementPlayer = document.getElementById('diceContainer_Pikachu');
-  //   const optionsPlayer = {
-  //     element: elementPlayer, // element to display the animated dice in.
-  //     numberOfDice: 2, // number of dice to use
-  //     callback: () => {
-  //       console.log('success');
-  //     }
-  //   };
-
-  //   const elementMonster = document.getElementById('diceContainer_Monster');
-  //   const optionsMonster = {
-  //     element: elementMonster, // element to display the animated dice in.
-  //     numberOfDice: 2, // number of dice to use
-  //     callback: () => {
-  //       console.log('success');
-  //     }
-  //   };
-  //   diceRoller(optionsPlayer);
-  //   setTimeout(() => diceRoller(optionsMonster), 100);
-  // }
-
   function rollDicePlayer() {
     const elementPlayer = document.getElementById('diceContainer_Pikachu');
     const optionsPlayer = {
       element: elementPlayer, // element to display the animated dice in.
       numberOfDice: 2, // number of dice to use
-      callback: () => {
-        console.log('success');
+      callback: (res) => {
+        console.log('res player', res);
       }
     };
     diceRoller(optionsPlayer);
@@ -75,8 +53,8 @@ const AttackButton = (props) => {
     const optionsMonster = {
       element: elementMonster, // element to display the animated dice in.
       numberOfDice: 2, // number of dice to use
-      callback: () => {
-        console.log('success');
+      callback: (res) => {
+        console.log('res monnster', res);
       }
     };
     diceRoller(optionsMonster);
