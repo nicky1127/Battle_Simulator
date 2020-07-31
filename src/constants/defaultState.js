@@ -10,6 +10,12 @@ const data = {
   layoutReducer: {
     displayAttackText: false,
     displayAttackButton: true
+  },
+  characterReducer:{
+    playerCharacter:'pikachu',
+    playerHealth:70,
+    monsterCharacter:'monster',
+    monsterHealth:90
   }
 };
 
