@@ -3,9 +3,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Box } from '@material-ui/core';
 import { connect } from 'react-redux';
 import ChracterPanel from 'components/abstraction/CharacterPanel';
-import Pikachu from 'components/characters/Pikachu';
+import Player from 'components/characters/Player';
 import Monster from 'components/characters/Monster';
 import AttackPanel from 'components/layouts/AttackPanel';
+import constants from 'constants/index';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -16,28 +17,31 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const BattlePanel = (props) => {
-  const {} = props;
+  const { playerChrCode, monsterChrCode } = props;
 
   const classes = useStyles();
 
-  const player = <ChracterPanel character={<Pikachu />} role="player" name="Pikachu" />;
-  const monster = (
-    <ChracterPanel character={<Monster />} role="monster" name="Monster" position="right" />
-  );
+  const playerCharacter = constants.characters.find((chr) => chr.code === playerChrCode);
+  const monsterCharacter = constants.characters.find((chr) => chr.code === monsterChrCode);
+
+  const playerDom = <ChracterPanel characterGrid={<Player/>} character={playerCharacter} />;
+  const monsterDom = <ChracterPanel characterGrid={<Monster/>} character={monsterCharacter} />;
 
   return (
     <Box id="battlePanel" className={classes.root}>
-      {player}
+      {playerDom}
       <AttackPanel />
-      {monster}
+      {monsterDom}
     </Box>
   );
 };
 
 const mapStateToProps = (state) => {
-  const {} = state;
+  const {
+    characterReducer: { playerChrCode, monsterChrCode }
+  } = state;
 
-  return {};
+  return { playerChrCode, monsterChrCode };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {

@@ -36,11 +36,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const AttackButton = (props) => {
-  const { payerRolling, monsterRolling, displayAttackButton } = props;
+  const { payerRolling, monsterRolling, playerChrCode, monsterChrCode } = props;
   const classes = useStyles({ ...props });
 
   function rollDicePlayer() {
-    const elementPlayer = document.getElementById('diceContainer_Pikachu');
+    const elementPlayer = document.getElementById(`diceContainer_${playerChrCode}`);
     const optionsPlayer = {
       element: elementPlayer, // element to display the animated dice in.
       numberOfDice: 2, // number of dice to use,
@@ -54,7 +54,7 @@ const AttackButton = (props) => {
   }
 
   function rollDiceMonster() {
-    const elementMonster = document.getElementById('diceContainer_Monster');
+    const elementMonster = document.getElementById(`diceContainer_${monsterChrCode}`);
     const optionsMonster = {
       element: elementMonster, // element to display the animated dice in.
       numberOfDice: 2, // number of dice to use
@@ -89,10 +89,11 @@ const AttackButton = (props) => {
 const mapStateToProps = (state) => {
   const {
     diceReducer: { payerRolling, monsterRolling },
-    layoutReducer: { displayAttackButton }
+    layoutReducer: { displayAttackButton },
+    characterReducer: { playerChrCode, monsterChrCode }
   } = state;
 
-  return { payerRolling, monsterRolling, displayAttackButton };
+  return { payerRolling, monsterRolling, displayAttackButton, playerChrCode, monsterChrCode };
 };
 
 const ConnectedAttackButton = connect(mapStateToProps, {

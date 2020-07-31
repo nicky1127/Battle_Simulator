@@ -13,22 +13,22 @@ const useStyles = makeStyles((theme) => ({
     boxSizing: 'border-box',
     borderRadius: '25px',
     display: 'flex',
-    flexDirection: (props) => (props.position === 'right' ? 'row-reverse' : 'row'),
-    justifyContent: (props) => (props.position === 'right' ? 'flex-end' : 'flex-start'),
+    flexDirection: (props) => (props.character.role === 'monster' ? 'row-reverse' : 'row'),
+    justifyContent: (props) => (props.character.role === 'monster' ? 'flex-end' : 'flex-start'),
     alignItems: 'center',
-    marginLeft: (props) => props.position === 'right' && 'auto'
+    marginLeft: (props) => props.character.role === 'monster' && 'auto'
   }
 }));
 
 const MainContainer = (props) => {
-  const { character, name, role } = props;
+  const { character, characterGrid } = props;
 
   const classes = useStyles({ ...props });
 
   return (
     <Box id="characterPanel" className={classes.root}>
-      {character}
-      <DiceContainer character={name} role={role} />
+      {characterGrid}
+      <DiceContainer code={character.code} role={character.role} />
     </Box>
   );
 };

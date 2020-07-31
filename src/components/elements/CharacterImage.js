@@ -20,13 +20,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const CharacterImage = (props) => {
-  const { src, name } = props;
+  const { code } = props;
 
   const classes = useStyles({ ...props });
 
   return (
     <Paper
-      id={`characterImage_${name}`}
+      id={`characterImage_${code}`}
       elevation={5}
       className={clsx('characterImage', classes.root)}
     ></Paper>

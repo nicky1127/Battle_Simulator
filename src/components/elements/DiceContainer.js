@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
 
 const DiceContainer = (props) => {
   const classes = useStyles({ ...props });
-  const { character, score, isRolling, displayScore } = props;
+  const { code, score, isRolling, displayScore } = props;
   const [checked, setChecked] = useState(false);
 
   useEffect(() => {
@@ -40,7 +40,7 @@ const DiceContainer = (props) => {
 
   return (
     <Box
-      id={`diceContainer_${character}`}
+      id={`diceContainer_${code}`}
       elevation={5}
       className={clsx('diceContainer', classes.root)}
     >

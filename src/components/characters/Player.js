@@ -6,38 +6,39 @@ import { connect } from 'react-redux';
 import CharacterGrid from 'components/abstraction/CharacterGrid';
 import HealthBar from 'components/elements/HealthBar';
 import CharacterImage from 'components/elements/CharacterImage';
-
 import constants from 'constants/index';
 
 const useStyles = makeStyles((theme) => ({
   root: {}
 }));
 
-const Monster = (props) => {
+const Player = (props) => {
   const { code } = props;
   const classes = useStyles();
 
   const character = constants.characters.find((chr) => chr.code === code);
-  console.log('player character', character);
+  
 
   const healthBar = <HealthBar max={100} current={30} />;
-  const image = <CharacterImage src={character.src} code={character.code} position={character.position} />;
+  const image = (
+    <CharacterImage src={character.src} code={character.code} position={character.position} />
+  );
 
   return <CharacterGrid healthBar={healthBar} image={image} name={character.name} />;
 };
 
 const mapStateToProps = (state) => {
   const {
-    characterReducer: { monsterChrCode }
+    characterReducer: { playerChrCode }
   } = state;
 
-  return { code: monsterChrCode };
+  return { code: playerChrCode };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {};
 };
 
-const ConnectedMonster = connect(mapStateToProps, mapDispatchToProps)(Monster);
+const ConnectedPlayer = connect(mapStateToProps, mapDispatchToProps)(Player);
 
-export default ConnectedMonster;
+export default ConnectedPlayer;
