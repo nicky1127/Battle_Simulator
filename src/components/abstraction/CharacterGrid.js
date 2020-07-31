@@ -6,8 +6,8 @@ import { connect } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: '250px',
-    height: '250px',
+    width: '70%',
+    height: '100%',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',

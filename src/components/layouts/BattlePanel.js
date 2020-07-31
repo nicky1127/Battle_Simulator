@@ -21,7 +21,7 @@ const BattlePanel = (props) => {
   // const monster = <ChracterPanel character='Pikachu'/>
 
   return (
-    <Box id="screenContainer" className={classes.root}>
+    <Box id="battlePanel" className={classes.root}>
       {player}
     </Box>
   );

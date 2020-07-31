@@ -2,8 +2,6 @@ import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box } from '@material-ui/core';
 import { connect } from 'react-redux';
-import Character from 'components/elements/CharacterImage';
-import HealthBar from 'components/elements/HealthBar';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,7 +22,7 @@ const MainContainer = (props) => {
   const classes = useStyles();
 
   return (
-    <Box id="screenContainer" className={classes.root}>
+    <Box id="characterPanel" className={classes.root}>
       {character}
     </Box>
   );

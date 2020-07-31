@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
 const Pikachu = (props) => {
   const classes = useStyles();
 
-  const healthBar = <healthBar max={100} current={30} />;
+  const healthBar = <HealthBar max={100} current={30} />;
   const image = <CharacterImage src="/images/pikachu.jpg" name="Pikachu" />;
 
   return <CharacterGrid healthBar={healthBar} image={image} name="Pikachu" />;
