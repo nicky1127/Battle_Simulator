@@ -4,11 +4,13 @@ import { Box } from '@material-ui/core';
 import { connect } from 'react-redux';
 import ChracterPanel from 'components/abstraction/CharacterPanel';
 import Pikachu from 'components/characters/Pikachu';
+import Monster from 'components/characters/Monster';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
-    height: '100%'
+    height: '100%',
+    display: 'flex'
   }
 }));
 
@@ -18,11 +20,12 @@ const BattlePanel = (props) => {
   const classes = useStyles();
 
   const player = <ChracterPanel character={<Pikachu />} />;
-  // const monster = <ChracterPanel character='Pikachu'/>
+  const monster = <ChracterPanel character={<Monster />} />;
 
   return (
     <Box id="battlePanel" className={classes.root}>
       {player}
+      {monster}
     </Box>
   );
 };

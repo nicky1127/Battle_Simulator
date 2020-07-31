@@ -12,13 +12,13 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const Pikachu = (props) => {
+const Monster = (props) => {
   const classes = useStyles();
 
   const healthBar = <HealthBar max={100} current={30} />;
-  const image = <CharacterImage src="/images/pikachu.jpg" name="Pikachu" position='50% 0'/>;
+  const image = <CharacterImage src="/images/godzilla.jpg" name="Monster" position='50% 50%'/>;
 
-  return <CharacterGrid healthBar={healthBar} image={image} name="Pikachu" />;
+  return <CharacterGrid healthBar={healthBar} image={image} name="Monster" />;
 };
 
 const mapStateToProps = (state) => {
@@ -31,6 +31,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {};
 };
 
-const ConnectedPikachu = connect(mapStateToProps, mapDispatchToProps)(Pikachu);
+const ConnectedMonster = connect(mapStateToProps, mapDispatchToProps)(Monster);
 
-export default ConnectedPikachu;
+export default ConnectedMonster;

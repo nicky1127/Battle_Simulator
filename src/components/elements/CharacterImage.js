@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundImage: (props) => `url(${props.src})`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
-    backgroundPosition: '50% 0',
+    backgroundPosition: (props) => props.position,
     margin: '50px'
   }
 }));
