@@ -24,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center'
   },
   text: {
+    fontFamily: 'Permanent Marker, cursive',
     textAlign: 'center',
     display: 'block'
   }
@@ -39,14 +40,10 @@ const DiceContainer = (props) => {
   }, [displayScore]);
 
   return (
-    <Box
-      id={`diceContainer_${code}`}
-      elevation={5}
-      className={clsx('diceContainer', classes.root)}
-    >
+    <Box id={`diceContainer_${code}`} elevation={5} className={clsx('diceContainer', classes.root)}>
       <Zoom in={checked}>
         <Box className={classes.paper}>
-          <Typography className={classes.text} variant="h6">
+          <Typography className={classes.text} variant="h5">
             Total Power
           </Typography>
           <Typography className={classes.text} variant="h4">

@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     transform: 'rotate(-20deg)'
   },
   text: {
-    'font-family': 'Ranchers, cursive',
+    fontFamily: 'Permanent Marker, cursive',
     textAlign: 'center',
     fontSize: '80px'
   }
@@ -35,9 +35,9 @@ const Attacktext = (props) => {
   let text;
 
   if (scoreDiff > 0) {
-    text = `You hit for ${scoreDiff}`;
+    text = `You hit for ${scoreDiff} !`;
   } else if (scoreDiff < 0) {
-    text = `Monster hits for ${Math.abs(scoreDiff)}`;
+    text = `Monster hits for ${Math.abs(scoreDiff)} !`;
   } else {
     text = "It's a tie!";
   }

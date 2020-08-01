@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box } from '@material-ui/core';
 import { connect } from 'react-redux';
+import StartPanel from 'components/layouts/StartPanel';
 import BattlePanel from 'components/layouts/BattlePanel';
 import FinishPanel from 'components/layouts/FinishPanel';
 
@@ -24,7 +25,7 @@ const MainContainer = (props) => {
 
   switch (stage) {
     case 'start':
-      content = <BattlePanel />;
+      content = <StartPanel />;
       break;
     case 'battle':
       content = <BattlePanel />;
@@ -39,6 +40,7 @@ const MainContainer = (props) => {
     <Box id="screenContainer" className={classes.root}>
       {content}
       {/* <FinishPanel /> */}
+      {/* <BattlePanel /> */}
     </Box>
   );
 };
