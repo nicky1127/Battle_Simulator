@@ -20,13 +20,15 @@ export const setMonsterAttack = (payload) => {
   return obj;
 };
 
-// export const calculateHealth
-
-
+export const setPlayerChrCode = (payload) => {
+  const obj = { type: types.SET_PLAYER_CHARACTER_CODE, payload };
+  return obj;
+};
 
 const actions = {
   setPlayerHealth,
-  setMonsterHealth
+  setMonsterHealth,
+  setPlayerChrCode
 };
 
 export default actions;

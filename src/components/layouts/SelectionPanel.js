@@ -19,12 +19,12 @@ const useStyles = makeStyles((theme) => ({
     boxSizing: 'border-box',
     boxShadow: '0 0 0 15px #4527a0',
     borderRadius: '15px',
-    paddingTop: '50px'
+    paddingTop: '30px'
   },
   characterContainer: {
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center'
+    height:'270px'
   },
   text: {
     fontFamily: 'Luckiest Guy, cursive',
@@ -39,7 +39,7 @@ const SelectionPanel = (props) => {
 
   const content = constants.characters
     .filter((chr) => chr.role === 'player')
-    .map((chr) => <CharacterButton code={chr.code} src={chr.src} position={chr.position} />);
+    .map((chr) => <CharacterButton character={chr} />);
 
   return (
     <Box id="selectionPanel" className={classes.root}>

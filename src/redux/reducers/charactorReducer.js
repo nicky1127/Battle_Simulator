@@ -25,6 +25,10 @@ const reducer = (state = initialState, action) => {
     return { ...state, monsterAttack: action.payload };
   }
 
+  if (action.type === types.SET_PLAYER_CHARACTER_CODE) {
+    return { ...state, playerChrCode: action.payload };
+  }
+
   if (action.type === START_GAME_PROCESS) {
     return { ...state, ...defaultState.characterReducer };
   }
