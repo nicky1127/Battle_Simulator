@@ -6,8 +6,14 @@ const characters = [
     src: '/images/pikachu.jpg',
     position: '50% 0'
   },
-  { code: 'ironman', name: 'Iron Man', role: 'player' },
-  { code: 'elsa', name: 'Elsa', role: 'player' },
+  {
+    code: 'ironman',
+    name: 'Iron Man',
+    role: 'player',
+    src: '/images/ironman.jpg',
+    position: '50% 50%'
+  },
+  { code: 'elsa', name: 'Elsa', role: 'player', src: '/images/elsa.jpg', position: '50% 50%' },
   {
     code: 'monster',
     name: 'Mega Godzilla',
