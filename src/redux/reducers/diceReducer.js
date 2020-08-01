@@ -1,4 +1,5 @@
 import * as types from 'redux/_types/dice';
+import { START_GAME_PROCESS } from 'redux/_types/process';
 import constants from 'constants/index';
 
 const { defaultState } = constants;
@@ -29,6 +30,10 @@ const reducer = (state = initialState, action) => {
 
   if (action.type === types.DISPLAY_MONSTER_TOTAL_SCORE) {
     return { ...state, displayMonsterScore: action.payload };
+  }
+
+  if (action.type === START_GAME_PROCESS) {
+    return { ...state, ...defaultState.diceReducer };
   }
 
   return state;

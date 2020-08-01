@@ -5,6 +5,7 @@ import { Box, Paper, Typography } from '@material-ui/core';
 import { connect } from 'react-redux';
 import { startRollingDiceProcess } from 'redux/_actions/process';
 import ReplayIcon from '@material-ui/icons/Replay';
+import { startGameProcess } from 'redux/_actions/process';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -55,6 +56,7 @@ const ReplayButton = (props) => {
       id="replayBtn"
       elevation={5}
       className={classes.root}
+      onClick={props.startGameProcess}
       onMouseEnter={handleHoverOn}
       onMouseLeave={handleHoverOff}
     >
@@ -75,7 +77,7 @@ const mapStateToProps = (state) => {
 };
 
 const ConnectedReplayButton = connect(mapStateToProps, {
-  startRollingDiceProcess
+  startGameProcess
 })(ReplayButton);
 
 export default ConnectedReplayButton;

@@ -37,8 +37,8 @@ const MainContainer = (props) => {
 
   return (
     <Box id="screenContainer" className={classes.root}>
-      {/* {content} */}
-      <FinishPanel />
+      {content}
+      {/* <FinishPanel /> */}
     </Box>
   );
 };

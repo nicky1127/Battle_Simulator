@@ -1,4 +1,5 @@
 import * as types from 'redux/_types/status';
+import { START_GAME_PROCESS } from 'redux/_types/process';
 import constants from 'constants/index';
 
 const { defaultState } = constants;
@@ -18,6 +19,10 @@ const reducer = (state = initialState, action) => {
 
   if (action.type === types.SET_ROUND_WINNER) {
     return { ...state, roundWinner: action.payload, round: state.round + 1 };
+  }
+
+  if (action.type === START_GAME_PROCESS) {
+    return { ...state, ...defaultState.statusReducer };
   }
 
   return state;
