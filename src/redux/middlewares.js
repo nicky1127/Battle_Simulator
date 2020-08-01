@@ -65,8 +65,17 @@ export const rollingDiceProcess = (store) => (next) => (action) => {
 export const updatinghealthProcess = (store) => (next) => (action) => {
   const { dispatch } = store;
   const { playerHealth, monsterHealth } = store.getState().characterReducer;
+  const { playerScore, monsterScore } = store.getState().diceReducer;
+  const scoreDiff = playerScore - monsterScore;
+  console.log('scoreDiff', scoreDiff);
+  const absScoreDiff = Math.abs(scoreDiff);
   if (action.type === process_types.START_UPDATE_HEALTH_PROCESS) {
-    Promise.resolve().then(() => dispatch(actions.layout.displayAttackBtn(false)));
+    Promise.resolve().then(() => {
+      if (scoreDiff > 0)
+        return dispatch(actions.character.setMonsterHealth(monsterHealth - absScoreDiff));
+      else if (scoreDiff < 0)
+        return dispatch(actions.character.setPlayerHealth(playerHealth - absScoreDiff));
+    });
   }
   return next(action);
 };

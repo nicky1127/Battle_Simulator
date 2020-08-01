@@ -14,12 +14,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Monster = (props) => {
-  const { code } = props;
+  const { code, health } = props;
   const classes = useStyles();
 
   const character = constants.characters.find((chr) => chr.code === code);
 
-  const healthBar = <HealthBar max={100} current={30} />;
+  const healthBar = <HealthBar max={100} current={health} />;
   const image = (
     <CharacterImage src={character.src} code={character.code} position={character.position} />
   );
@@ -29,10 +29,10 @@ const Monster = (props) => {
 
 const mapStateToProps = (state) => {
   const {
-    characterReducer: { monsterChrCode }
+    characterReducer: { monsterChrCode, monsterHealth }
   } = state;
 
-  return { code: monsterChrCode };
+  return { code: monsterChrCode, health: monsterHealth };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {

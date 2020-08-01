@@ -13,13 +13,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Player = (props) => {
-  const { code } = props;
+  const { code, health } = props;
   const classes = useStyles();
 
   const character = constants.characters.find((chr) => chr.code === code);
-  
 
-  const healthBar = <HealthBar max={100} current={30} />;
+  const healthBar = <HealthBar max={100} current={health} />;
   const image = (
     <CharacterImage src={character.src} code={character.code} position={character.position} />
   );
@@ -29,10 +28,10 @@ const Player = (props) => {
 
 const mapStateToProps = (state) => {
   const {
-    characterReducer: { playerChrCode }
+    characterReducer: { playerChrCode, playerHealth }
   } = state;
 
-  return { code: playerChrCode };
+  return { code: playerChrCode, health: playerHealth };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
