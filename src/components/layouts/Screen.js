@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Box } from '@material-ui/core';
 import { connect } from 'react-redux';
 import BattlePanel from 'components/layouts/BattlePanel';
+import FinishPanel from 'components/layouts/FinishPanel';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -15,21 +16,39 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const MainContainer = (props) => {
-  const {} = props;
+  const { stage } = props;
 
   const classes = useStyles();
 
+  let content;
+
+  switch (stage) {
+    case 'start':
+      content = <BattlePanel />;
+      break;
+    case 'battle':
+      content = <BattlePanel />;
+      break;
+    case 'finish':
+      content = <FinishPanel />;
+      break;
+    default:
+  }
+
   return (
     <Box id="screenContainer" className={classes.root}>
-      <BattlePanel />
+      {/* {content} */}
+      <FinishPanel />
     </Box>
   );
 };
 
 const mapStateToProps = (state) => {
-  const {} = state;
+  const {
+    statusReducer: { stage }
+  } = state;
 
-  return {};
+  return { stage };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
