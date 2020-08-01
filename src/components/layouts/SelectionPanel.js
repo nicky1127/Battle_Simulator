@@ -20,14 +20,14 @@ const useStyles = makeStyles((theme) => ({
   },
   text: {
     fontFamily: 'Luckiest Guy, cursive',
-    fontSize: '80px'
+    fontSize: '60px'
   }
 }));
 
 const SelectionPanel = (props) => {
   const classes = useStyles();
 
-  const text = 'Roll The Dice Battle';
+  const text = 'Please Choose Your Character';
 
   return (
     <Box id="selectionPanel" className={classes.root}>
