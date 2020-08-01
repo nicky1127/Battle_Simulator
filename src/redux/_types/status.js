@@ -1,0 +1,3 @@
+export const SET_GAME_STAGE = 'SET_GAME_STAGE';
+export const SET_GAME_WINNER = 'SET_GAME_WINNER';
+export const SET_ROUND_WINNER = 'SET_ROUND_WINNER';

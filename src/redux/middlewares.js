@@ -77,12 +77,16 @@ export const updatinghealthProcess = (store) => (next) => (action) => {
             return dispatch(actions.character.setMonsterHealth(monsterHealth - absScoreDiff));
           } else {
             dispatch(actions.character.setMonsterHealth(0));
+            dispatch(actions.status.setGameWinner('player'));
+            dispatch(actions.status.setGameStage('finish'));
           }
         } else if (scoreDiff < 0)
           if (playerHealth - absScoreDiff > 0) {
             return dispatch(actions.character.setPlayerHealth(playerHealth - absScoreDiff));
           } else {
             dispatch(actions.character.setPlayerHealth(0));
+            dispatch(actions.status.setGameWinner('monster'));
+            dispatch(actions.status.setGameStage('finish'));
           }
       })
       .then(() => dispatch(actions.layout.displayAttackBtn(true)));
