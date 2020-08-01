@@ -24,8 +24,8 @@ const BattlePanel = (props) => {
   const playerCharacter = constants.characters.find((chr) => chr.code === playerChrCode);
   const monsterCharacter = constants.characters.find((chr) => chr.code === monsterChrCode);
 
-  const playerDom = <ChracterPanel characterGrid={<Player/>} character={playerCharacter} />;
-  const monsterDom = <ChracterPanel characterGrid={<Monster/>} character={monsterCharacter} />;
+  const playerDom = <ChracterPanel characterGrid={<Player />} character={playerCharacter} />;
+  const monsterDom = <ChracterPanel characterGrid={<Monster />} character={monsterCharacter} />;
 
   return (
     <Box id="battlePanel" className={classes.root}>

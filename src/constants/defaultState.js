@@ -11,14 +11,14 @@ const data = {
     round: 0,
     roundWinner: null,
     winner: null,
-    stage: 'start_guide'
+    stage: 'battle'
   },
   layoutReducer: {
     displayAttackText: false,
     displayAttackButton: true
   },
   characterReducer: {
-    playerChrCode: null,
+    playerChrCode: 'elsa',
     playerHealth: 100,
     playAttack: false,
     monsterChrCode: 'monster',

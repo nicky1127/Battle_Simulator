@@ -8,7 +8,7 @@ import FinishPanel from 'components/layouts/FinishPanel';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: '1600px',
+    width: '1700px',
     height: '800px',
     boxSizing: 'border-box',
     border: '40px solid #000',

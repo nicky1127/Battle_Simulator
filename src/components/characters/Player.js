@@ -18,7 +18,7 @@ const Player = (props) => {
 
   const character = constants.characters.find((chr) => chr.code === code);
 
-  const healthBar = <HealthBar max={100} current={health} />;
+  const healthBar = <HealthBar max={100} current={health} code={code} character={character} />;
   const image = (
     <CharacterImage src={character.src} code={character.code} position={character.position} />
   );
