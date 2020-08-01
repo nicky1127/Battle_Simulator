@@ -2,19 +2,21 @@ import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box } from '@material-ui/core';
 import { connect } from 'react-redux';
-import AttackButton from 'components/elements/AttackButton';
-import Attacktext from 'components/elements/AttackText';
+import ReplayButton from 'components/elements/ReplayButton';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '60%',
     height: '50%',
-    flex: '1 1 auto',
+    backgroundColor: '#444',
+    // flex: '1 1 auto',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'flex-start',
-    paddingTop: '200px'
+    boxSizing: 'border-box',
+    boxShadow: '0 0 0 15px #333',
+    borderRadius:'15px'
   }
 }));
 
@@ -25,7 +27,7 @@ const ReplayPanel = (props) => {
 
   return (
     <Box id="replayPanel" className={classes.root}>
-      <AttackButton />
+      <ReplayButton />
     </Box>
   );
 };
