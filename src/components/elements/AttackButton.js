@@ -3,14 +3,6 @@ import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box, Paper, Typography } from '@material-ui/core';
 import { connect } from 'react-redux';
-import diceRoller from 'dice-roller-3d';
-import {
-  playerRollingDiceStart,
-  playerRollingDiceFinish,
-  monsterRollingDiceStart,
-  monsterRollingDiceFinish
-} from 'redux/_actions/dice';
-import { displayAttackBtn } from 'redux/_actions/layout';
 import { startRollingDiceProcess } from 'redux/_actions/process';
 
 const useStyles = makeStyles((theme) => ({
@@ -37,46 +29,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const AttackButton = (props) => {
-  const { payerRolling, monsterRolling, playerChrCode, monsterChrCode } = props;
+  const { payerRolling, monsterRolling } = props;
   const classes = useStyles({ ...props });
-
-  // function rollDicePlayer() {
-  //   const elementPlayer = document.getElementById(`diceContainer_${playerChrCode}`);
-  //   const optionsPlayer = {
-  //     element: elementPlayer, // element to display the animated dice in.
-  //     numberOfDice: 2, // number of dice to use,
-  //     callback: (res) => {
-  //       console.log('res player', res);
-  //       const sum = res.reduce((a, b) => a + b, 0);
-  //       props.playerRollingDiceFinish(sum);
-  //     }
-  //   };
-  //   diceRoller(optionsPlayer);
-  // }
-
-  // function rollDiceMonster() {
-  //   const elementMonster = document.getElementById(`diceContainer_${monsterChrCode}`);
-  //   const optionsMonster = {
-  //     element: elementMonster, // element to display the animated dice in.
-  //     numberOfDice: 2, // number of dice to use
-  //     callback: (res) => {
-  //       console.log('res monnster', res);
-  //       const sum = res.reduce((a, b) => a + b, 0);
-  //       props.monsterRollingDiceFinish(sum);
-  //     }
-  //   };
-  //   diceRoller(optionsMonster);
-  // }
 
   function rollDice() {
     if (!payerRolling && !monsterRolling) {
-      
       props.startRollingDiceProcess();
-      // props.displayAttackBtn(false);
-      // props.playerRollingDiceStart();
-      // props.monsterRollingDiceStart();
-      // rollDicePlayer();
-      // setTimeout(() => rollDiceMonster(), 3000);
     }
   }
 
@@ -100,11 +58,6 @@ const mapStateToProps = (state) => {
 };
 
 const ConnectedAttackButton = connect(mapStateToProps, {
-  playerRollingDiceStart,
-  playerRollingDiceFinish,
-  monsterRollingDiceStart,
-  monsterRollingDiceFinish,
-  displayAttackBtn,
   startRollingDiceProcess
 })(AttackButton);
 

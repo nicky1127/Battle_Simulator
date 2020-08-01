@@ -11,13 +11,13 @@ const data = {
     displayAttackText: false,
     displayAttackButton: true
   },
-  characterReducer:{
-    playerChrCode:'pikachu',
-    playerHealth:70,
-    playAttack:false,
-    monsterChrCode:'monster',
-    monsterHealth:90,
-    monsterAttack:false
+  characterReducer: {
+    playerChrCode: 'pikachu',
+    playerHealth: 70,
+    playAttack: false,
+    monsterChrCode: 'monster',
+    monsterHealth: 90,
+    monsterAttack: false
   }
 };
 

@@ -18,10 +18,11 @@ const Monster = (props) => {
   const classes = useStyles();
 
   const character = constants.characters.find((chr) => chr.code === code);
-  console.log('player character', character);
 
   const healthBar = <HealthBar max={100} current={30} />;
-  const image = <CharacterImage src={character.src} code={character.code} position={character.position} />;
+  const image = (
+    <CharacterImage src={character.src} code={character.code} position={character.position} />
+  );
 
   return <CharacterGrid healthBar={healthBar} image={image} name={character.name} />;
 };

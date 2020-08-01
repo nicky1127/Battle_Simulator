@@ -24,7 +24,6 @@ const reducer = (state = initialState, action) => {
     return { ...state, monsterAttack: action.payload };
   }
 
-
   return state;
 };
 
