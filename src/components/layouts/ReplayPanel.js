@@ -7,38 +7,37 @@ import Attacktext from 'components/elements/AttackText';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    // width: '100%',
-    // height: '100%',
+    width: '60%',
+    height: '50%',
     flex: '1 1 auto',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'flex-start',
-    paddingTop:'200px'
-  },
+    paddingTop: '200px'
+  }
 }));
 
-const AttackPanel = (props) => {
+const ReplayPanel = (props) => {
   const { displayAttackButton } = props;
 
   const classes = useStyles();
 
   return (
-    <Box id="attackPanel" className={classes.root}>
-      <Attacktext/>
-      {displayAttackButton && <AttackButton />}
+    <Box id="replayPanel" className={classes.root}>
+      <AttackButton />
     </Box>
   );
 };
 
 const mapStateToProps = (state) => {
   const {
-    layoutReducer: {displayAttackButton}
+    layoutReducer: { displayAttackButton }
   } = state;
 
   return { displayAttackButton };
 };
 
-const ConnectedAttackPanel = connect(mapStateToProps)(AttackPanel);
+const ConnectedReplayPanel = connect(mapStateToProps)(ReplayPanel);
 
-export default ConnectedAttackPanel;
+export default ConnectedReplayPanel;
