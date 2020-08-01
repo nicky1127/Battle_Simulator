@@ -7,7 +7,7 @@ import ReplayButton from 'components/elements/ReplayButton';
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '55%',
-    height: '50%',
+    height: '60%',
     backgroundColor: '#7986cb',
     display: 'flex',
     flexDirection: 'column',

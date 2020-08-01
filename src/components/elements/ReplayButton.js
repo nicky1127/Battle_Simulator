@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box, Paper, Typography } from '@material-ui/core';
@@ -8,8 +8,8 @@ import ReplayIcon from '@material-ui/icons/Replay';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: '250px',
-    height: '150px',
+    width: '280px',
+    height: '100px',
     margin: '30px auto',
     display: 'flex',
     justifyContent: 'center',
@@ -17,34 +17,49 @@ const useStyles = makeStyles((theme) => ({
     border: '3px solid #eee',
     boxSizing: 'border-box',
     backgroundColor: '#d50000',
-    borderRadius: '50%',
+    borderRadius: '10px',
     '&:hover': {
       cursor: ' pointer',
-      backgroundColor: '#039be5'
+      backgroundColor: '#039be5',
+      width: '310px',
+      height: '140px'
     }
   },
   text: {
     color: '#fff',
-    'font-family': 'Ranchers, cursive'
+    fontSize: (props) => (props.hover ? '70px' : '60px'),
+    fontFamily: 'Ranchers, cursive'
+  },
+  icon: {
+    color: '#fff',
+    fontSize: (props) => (props.hover ? '70px' : '60px'),
+    marginTop: '10px'
   }
 }));
 
 const ReplayButton = (props) => {
   const { payerRolling, monsterRolling } = props;
-  const classes = useStyles({ ...props });
+  const [hover, setHover] = useState(false);
+  const classes = useStyles({ ...props, hover });
 
-  function rollDice() {
-    if (!payerRolling && !monsterRolling) {
-      props.startRollingDiceProcess();
-    }
-  }
+  const handleHoverOn = () => {
+    setHover(true);
+  };
+
+  const handleHoverOff = () => {
+    setHover(false);
+  };
 
   return (
-    <Paper id="replayBtn" elevation={5} className={classes.root} onClick={rollDice}>
-      <Typography variant="h2" className={classes.text}>
-        Replay
-      </Typography>
-      <ReplayIcon/>
+    <Paper
+      id="replayBtn"
+      elevation={5}
+      className={classes.root}
+      onMouseEnter={handleHoverOn}
+      onMouseLeave={handleHoverOff}
+    >
+      <Typography className={classes.text}>Replay</Typography>
+      <ReplayIcon className={classes.icon} />
     </Paper>
   );
 };
