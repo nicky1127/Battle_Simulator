@@ -5,6 +5,11 @@ export const startRollingDiceProcess = () => {
   return obj;
 };
 
-const actions = { startRollingDiceProcess };
+export const startUpdateHealthProcess = () => {
+  const obj = { type: types.START_UPDATE_HEALTH_PROCESS };
+  return obj;
+};
+
+const actions = { startRollingDiceProcess, startUpdateHealthProcess };
 
 export default actions;

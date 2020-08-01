@@ -7,6 +7,11 @@ const data = {
     displayPlayerScore: false,
     displayMonsterScore: false
   },
+  statusReducer: {
+    round: 0,
+    roundWinner: null,
+    winner: null
+  },
   layoutReducer: {
     displayAttackText: false,
     displayAttackButton: true

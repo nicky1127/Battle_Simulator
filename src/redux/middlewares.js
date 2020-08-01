@@ -57,7 +57,16 @@ export const rollingDiceProcess = (store) => (next) => (action) => {
       .then(() => delay(1000))
       .then(() => dispatch(actions.layout.displayAttackText(false)))
       .then(() => delay(1000))
-      .then(() => dispatch(actions.layout.displayAttackBtn(true)));
+      .then(() => dispatch(actions.process.startUpdateHealthProcess()));
+  }
+  return next(action);
+};
+
+export const updatinghealthProcess = (store) => (next) => (action) => {
+  const { dispatch } = store;
+  const { playerHealth, monsterHealth } = store.getState().characterReducer;
+  if (action.type === process_types.START_UPDATE_HEALTH_PROCESS) {
+    Promise.resolve().then(() => dispatch(actions.layout.displayAttackBtn(false)));
   }
   return next(action);
 };
