@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Box, Paper, Typography } from '@material-ui/core';
 import { connect } from 'react-redux';
 import { startRollingDiceProcess } from 'redux/_actions/process';
+import ReplayIcon from '@material-ui/icons/Replay';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -43,6 +44,7 @@ const ReplayButton = (props) => {
       <Typography variant="h2" className={classes.text}>
         Replay
       </Typography>
+      <ReplayIcon/>
     </Paper>
   );
 };

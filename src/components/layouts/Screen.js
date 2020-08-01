@@ -8,9 +8,9 @@ import FinishPanel from 'components/layouts/FinishPanel';
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '1600px',
-    height: '700px',
-    border: '10px solid black',
+    height: '800px',
     boxSizing: 'border-box',
+    border: '40px solid #000',
     borderRadius: '25px'
   }
 }));
