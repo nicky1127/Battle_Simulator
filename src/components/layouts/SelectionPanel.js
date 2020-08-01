@@ -4,6 +4,7 @@ import { Box, Typography } from '@material-ui/core';
 import { connect } from 'react-redux';
 import ConfirmButton from 'components/elements/ConfirmButton';
 import CharacterButton from 'components/elements/CharacterButton';
+import { setGameStage } from 'redux/_actions/status';
 
 import constants from 'constants/index';
 
@@ -24,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   characterContainer: {
     display: 'flex',
     justifyContent: 'center',
-    height:'270px'
+    height: '270px'
   },
   text: {
     fontFamily: 'Luckiest Guy, cursive',
@@ -33,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const SelectionPanel = (props) => {
+  const { playerChrCode } = props;
   const classes = useStyles();
 
   const text = 'Please Choose Your Character';
@@ -45,17 +47,25 @@ const SelectionPanel = (props) => {
     <Box id="selectionPanel" className={classes.root}>
       <Typography className={classes.text}>{text}</Typography>
       <Box className={classes.characterContainer}>{content}</Box>
-      <ConfirmButton text="Next" width="150px" height="80px" fontSize="30px" />
+      <ConfirmButton
+        text="Next"
+        width="150px"
+        height="80px"
+        fontSize="30px"
+        callback={() => playerChrCode && props.setGameStage('start_guide')}
+      />
     </Box>
   );
 };
 
 const mapStateToProps = (state) => {
-  const {} = state;
+  const {
+    characterReducer: { playerChrCode }
+  } = state;
 
-  return {};
+  return { playerChrCode };
 };
 
-const ConnectedSelectionPanel = connect(mapStateToProps)(SelectionPanel);
+const ConnectedSelectionPanel = connect(mapStateToProps, { setGameStage })(SelectionPanel);
 
 export default ConnectedSelectionPanel;
