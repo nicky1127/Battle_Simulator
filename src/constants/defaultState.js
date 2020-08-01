@@ -10,7 +10,8 @@ const data = {
   statusReducer: {
     round: 0,
     roundWinner: null,
-    winner: null
+    winner: null,
+    stage: 'start'
   },
   layoutReducer: {
     displayAttackText: false,
@@ -18,10 +19,10 @@ const data = {
   },
   characterReducer: {
     playerChrCode: 'pikachu',
-    playerHealth: 70,
+    playerHealth: 3,
     playAttack: false,
     monsterChrCode: 'monster',
-    monsterHealth: 90,
+    monsterHealth: 2,
     monsterAttack: false
   }
 };

@@ -70,12 +70,22 @@ export const updatinghealthProcess = (store) => (next) => (action) => {
   console.log('scoreDiff', scoreDiff);
   const absScoreDiff = Math.abs(scoreDiff);
   if (action.type === process_types.START_UPDATE_HEALTH_PROCESS) {
-    Promise.resolve().then(() => {
-      if (scoreDiff > 0)
-        return dispatch(actions.character.setMonsterHealth(monsterHealth - absScoreDiff));
-      else if (scoreDiff < 0)
-        return dispatch(actions.character.setPlayerHealth(playerHealth - absScoreDiff));
-    });
+    Promise.resolve()
+      .then(() => {
+        if (scoreDiff > 0) {
+          if (monsterHealth - absScoreDiff > 0) {
+            return dispatch(actions.character.setMonsterHealth(monsterHealth - absScoreDiff));
+          } else {
+            dispatch(actions.character.setMonsterHealth(0));
+          }
+        } else if (scoreDiff < 0)
+          if (playerHealth - absScoreDiff > 0) {
+            return dispatch(actions.character.setPlayerHealth(playerHealth - absScoreDiff));
+          } else {
+            dispatch(actions.character.setPlayerHealth(0));
+          }
+      })
+      .then(() => dispatch(actions.layout.displayAttackBtn(true)));
   }
   return next(action);
 };
