@@ -8,7 +8,7 @@ import { startGameProcess } from 'redux/_actions/process';
 const useStyles = makeStyles((theme) => ({
   root: {
     width: (props) => props.width || '280px',
-    height: (props) => props.width || '100px',
+    height: (props) => props.height || '100px',
     margin: '30px auto',
     display: 'flex',
     justifyContent: 'center',
@@ -30,33 +30,17 @@ const useStyles = makeStyles((theme) => ({
   },
   text: {
     color: '#fff',
-    fontSize: (props) => (props.hover ? '70px' : '60px'),
+    fontSize: (props) => props.fontSize || '60px',
     fontFamily: 'Ranchers, cursive'
   }
 }));
 
 const ConfirmButton = (props) => {
   const { text, callback, icon } = props;
-  const [hover, setHover] = useState(false);
-  const classes = useStyles({ ...props, hover });
-
-  const handleHoverOn = () => {
-    setHover(true);
-  };
-
-  const handleHoverOff = () => {
-    setHover(false);
-  };
+  const classes = useStyles({ ...props });
 
   return (
-    <Paper
-      id="replayBtn"
-      elevation={5}
-      className={classes.root}
-      onClick={callback}
-      onMouseEnter={handleHoverOn}
-      onMouseLeave={handleHoverOff}
-    >
+    <Paper id="replayBtn" elevation={5} className={classes.root} onClick={callback}>
       <Typography className={classes.text}>{text}</Typography>
       {icon}
     </Paper>

@@ -11,7 +11,7 @@ const data = {
     round: 0,
     roundWinner: null,
     winner: null,
-    stage: 'start_play'
+    stage: 'start_selection'
   },
   layoutReducer: {
     displayAttackText: false,
