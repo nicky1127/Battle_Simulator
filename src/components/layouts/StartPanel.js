@@ -4,6 +4,7 @@ import { Box } from '@material-ui/core';
 import { connect } from 'react-redux';
 import PlayPanel from './PlayPanel';
 import SelectionPanel from './SelectionPanel';
+import GuidePanel from './GuidePanel';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,6 +29,8 @@ const StartPanel = (props) => {
     panel = <PlayPanel />;
   } else if (stage === 'start_selection') {
     panel = <SelectionPanel />;
+  } else {
+    panel = <GuidePanel />;
   }
 
   return (
