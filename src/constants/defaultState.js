@@ -19,10 +19,10 @@ const data = {
   },
   characterReducer: {
     playerChrCode: 'pikachu',
-    playerHealth: 1,
+    playerHealth: 100,
     playAttack: false,
     monsterChrCode: 'monster',
-    monsterHealth: 2,
+    monsterHealth: 100,
     monsterAttack: false
   }
 };

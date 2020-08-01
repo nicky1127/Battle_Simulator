@@ -67,8 +67,7 @@ export const updatinghealthProcess = (store) => (next) => (action) => {
   const { playerHealth, monsterHealth } = store.getState().characterReducer;
   const { playerScore, monsterScore } = store.getState().diceReducer;
   const scoreDiff = playerScore - monsterScore;
-  console.log('scoreDiff', scoreDiff);
-  const absScoreDiff = Math.abs(scoreDiff);
+  const absScoreDiff = Math.abs(scoreDiff) * 10;
   if (action.type === process_types.START_UPDATE_HEALTH_PROCESS) {
     Promise.resolve()
       .then(() => {
