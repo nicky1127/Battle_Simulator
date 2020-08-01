@@ -1,15 +1,10 @@
 import * as types from 'redux/_types/process';
 
-export const startDiceRollingProcess = () => {
-  const obj = { type: types.START_DICE_ROLLING_PROCESS };
+export const startRollingDiceProcess = () => {
+  const obj = { type: types.START_ROLLING_DICE_PROCESS };
   return obj;
 };
 
-
-
-
-
-const actions = {startDiceRollingProcess
-};
+const actions = { startRollingDiceProcess };
 
 export default actions;

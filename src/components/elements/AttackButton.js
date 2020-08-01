@@ -11,6 +11,7 @@ import {
   monsterRollingDiceFinish
 } from 'redux/_actions/dice';
 import { displayAttackBtn } from 'redux/_actions/layout';
+import { startRollingDiceProcess } from 'redux/_actions/process';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -39,41 +40,43 @@ const AttackButton = (props) => {
   const { payerRolling, monsterRolling, playerChrCode, monsterChrCode } = props;
   const classes = useStyles({ ...props });
 
-  function rollDicePlayer() {
-    const elementPlayer = document.getElementById(`diceContainer_${playerChrCode}`);
-    const optionsPlayer = {
-      element: elementPlayer, // element to display the animated dice in.
-      numberOfDice: 2, // number of dice to use,
-      callback: (res) => {
-        console.log('res player', res);
-        const sum = res.reduce((a, b) => a + b, 0);
-        props.playerRollingDiceFinish(sum);
-      }
-    };
-    diceRoller(optionsPlayer);
-  }
+  // function rollDicePlayer() {
+  //   const elementPlayer = document.getElementById(`diceContainer_${playerChrCode}`);
+  //   const optionsPlayer = {
+  //     element: elementPlayer, // element to display the animated dice in.
+  //     numberOfDice: 2, // number of dice to use,
+  //     callback: (res) => {
+  //       console.log('res player', res);
+  //       const sum = res.reduce((a, b) => a + b, 0);
+  //       props.playerRollingDiceFinish(sum);
+  //     }
+  //   };
+  //   diceRoller(optionsPlayer);
+  // }
 
-  function rollDiceMonster() {
-    const elementMonster = document.getElementById(`diceContainer_${monsterChrCode}`);
-    const optionsMonster = {
-      element: elementMonster, // element to display the animated dice in.
-      numberOfDice: 2, // number of dice to use
-      callback: (res) => {
-        console.log('res monnster', res);
-        const sum = res.reduce((a, b) => a + b, 0);
-        props.monsterRollingDiceFinish(sum);
-      }
-    };
-    diceRoller(optionsMonster);
-  }
+  // function rollDiceMonster() {
+  //   const elementMonster = document.getElementById(`diceContainer_${monsterChrCode}`);
+  //   const optionsMonster = {
+  //     element: elementMonster, // element to display the animated dice in.
+  //     numberOfDice: 2, // number of dice to use
+  //     callback: (res) => {
+  //       console.log('res monnster', res);
+  //       const sum = res.reduce((a, b) => a + b, 0);
+  //       props.monsterRollingDiceFinish(sum);
+  //     }
+  //   };
+  //   diceRoller(optionsMonster);
+  // }
 
   function rollDice() {
     if (!payerRolling && !monsterRolling) {
-      props.displayAttackBtn(false);
-      props.playerRollingDiceStart();
-      props.monsterRollingDiceStart();
-      rollDicePlayer();
-      setTimeout(() => rollDiceMonster(), 3000);
+      
+      props.startRollingDiceProcess();
+      // props.displayAttackBtn(false);
+      // props.playerRollingDiceStart();
+      // props.monsterRollingDiceStart();
+      // rollDicePlayer();
+      // setTimeout(() => rollDiceMonster(), 3000);
     }
   }
 
@@ -101,7 +104,8 @@ const ConnectedAttackButton = connect(mapStateToProps, {
   playerRollingDiceFinish,
   monsterRollingDiceStart,
   monsterRollingDiceFinish,
-  displayAttackBtn
+  displayAttackBtn,
+  startRollingDiceProcess
 })(AttackButton);
 
 export default ConnectedAttackButton;
