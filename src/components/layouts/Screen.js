@@ -23,17 +23,25 @@ const MainContainer = (props) => {
 
   let content;
 
-  switch (stage) {
-    case 'start':
-      content = <StartPanel />;
-      break;
-    case 'battle':
-      content = <BattlePanel />;
-      break;
-    case 'finish':
-      content = <FinishPanel />;
-      break;
-    default:
+  // switch (stage) {
+  //   case 'start':
+  //     content = <StartPanel />;
+  //     break;
+  //   case 'battle':
+  //     content = <BattlePanel />;
+  //     break;
+  //   case 'finish':
+  //     content = <FinishPanel />;
+  //     break;
+  //   default:
+  // }
+
+  if (stage.includes('start')) {
+    content = <StartPanel />;
+  } else if (stage === 'battle') {
+    content = <BattlePanel />;
+  } else if (stage === 'finish') {
+    content = <FinishPanel />;
   }
 
   return (

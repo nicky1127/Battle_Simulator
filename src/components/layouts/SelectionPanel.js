@@ -24,15 +24,15 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const PlayPanel = (props) => {
+const SelectionPanel = (props) => {
   const classes = useStyles();
 
   const text = 'Roll The Dice Battle';
 
   return (
-    <Box id="playPanel" className={classes.root}>
+    <Box id="selectionPanel" className={classes.root}>
       <Typography className={classes.text}>{text}</Typography>
-      <ConfirmButton text="Play !" />
+      <ConfirmButton text="Next" />
     </Box>
   );
 };
@@ -43,6 +43,6 @@ const mapStateToProps = (state) => {
   return {};
 };
 
-const ConnectedPlayPanel = connect(mapStateToProps)(PlayPanel);
+const ConnectedSelectionPanel = connect(mapStateToProps)(SelectionPanel);
 
-export default ConnectedPlayPanel;
+export default ConnectedSelectionPanel;

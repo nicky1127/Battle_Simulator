@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Box } from '@material-ui/core';
 import { connect } from 'react-redux';
 import PlayPanel from './PlayPanel';
+import SelectionPanel from './SelectionPanel';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -17,23 +18,31 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const StartPanel = (props) => {
-  const {} = props;
+  const { stage } = props;
 
   const classes = useStyles();
 
+  let panel;
+
+  if (stage === 'start_play') {
+    panel = <PlayPanel />;
+  } else if (stage === 'start_selection') {
+    panel = <SelectionPanel />;
+  }
+
   return (
     <Box id="startPanel" className={classes.root}>
-      <PlayPanel />
+      {panel}
     </Box>
   );
 };
 
 const mapStateToProps = (state) => {
   const {
-    characterReducer: { playerChrCode, monsterChrCode }
+    statusReducer: { stage }
   } = state;
 
-  return { playerChrCode, monsterChrCode };
+  return { stage };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
