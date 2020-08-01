@@ -2,12 +2,12 @@ import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box, Typography } from '@material-ui/core';
 import { connect } from 'react-redux';
-import ReplayButton from 'components/elements/ReplayButton';
+import ConfirmButton from 'components/elements/ConfirmButton';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: '55%',
-    height: '60%',
+    width: '65%',
+    height: '70%',
     backgroundColor: '#7986cb',
     display: 'flex',
     flexDirection: 'column',
@@ -34,7 +34,7 @@ const PlayPanel = (props) => {
   return (
     <Box id="playPanel" className={classes.root}>
       <Typography className={classes.text}>{text}</Typography>
-      <ReplayButton />
+      <ConfirmButton />
     </Box>
   );
 };

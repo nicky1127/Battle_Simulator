@@ -2,7 +2,9 @@ import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box, Typography } from '@material-ui/core';
 import { connect } from 'react-redux';
-import ReplayButton from 'components/elements/ReplayButton';
+import ConfirmButton from 'components/elements/ConfirmButton';
+import { startGameProcess } from 'redux/_actions/process';
+import ReplayIcon from '@material-ui/icons/Replay';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -16,11 +18,16 @@ const useStyles = makeStyles((theme) => ({
     boxSizing: 'border-box',
     boxShadow: '0 0 0 15px #4527a0',
     borderRadius: '15px',
-    paddingTop:'100px'
+    paddingTop: '100px'
   },
   text: {
     fontFamily: 'Ranchers, cursive',
     fontSize: '50px'
+  },
+  icon: {
+    color: '#fff',
+    fontSize: (props) => (props.hover ? '70px' : '60px'),
+    marginTop: '10px'
   }
 }));
 
@@ -40,7 +47,11 @@ const ReplayPanel = (props) => {
   return (
     <Box id="replayPanel" className={classes.root}>
       <Typography className={classes.text}>{text}</Typography>
-      <ReplayButton />
+      <ConfirmButton
+        text="Replay"
+        callback={props.startGameProcess}
+        icon={<ReplayIcon className={classes.icon} />}
+      />
     </Box>
   );
 };
@@ -53,6 +64,6 @@ const mapStateToProps = (state) => {
   return { winner };
 };
 
-const ConnectedReplayPanel = connect(mapStateToProps)(ReplayPanel);
+const ConnectedReplayPanel = connect(mapStateToProps, { startGameProcess })(ReplayPanel);
 
 export default ConnectedReplayPanel;

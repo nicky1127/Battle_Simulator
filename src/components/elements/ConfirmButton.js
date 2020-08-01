@@ -1,16 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import clsx from 'clsx';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Box, Paper, Typography } from '@material-ui/core';
+import { Paper, Typography } from '@material-ui/core';
 import { connect } from 'react-redux';
-import { startRollingDiceProcess } from 'redux/_actions/process';
-import ReplayIcon from '@material-ui/icons/Replay';
+
 import { startGameProcess } from 'redux/_actions/process';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: '280px',
-    height: '100px',
+    width: (props) => props.width || '280px',
+    height: (props) => props.width || '100px',
     margin: '30px auto',
     display: 'flex',
     justifyContent: 'center',
@@ -22,24 +20,23 @@ const useStyles = makeStyles((theme) => ({
     '&:hover': {
       cursor: ' pointer',
       backgroundColor: '#039be5',
-      width: '310px',
-      height: '140px'
+      '-webkit-transform': 'scale(1.2, 1.2)',
+      '-webkit-transition-timing-function': 'ease-out',
+      '-webkit-transition-duration': '250ms',
+      '-moz-transform': 'scale(1.2, 1.2)',
+      '-moz-transition-timing-function': 'ease-out',
+      '-moz-transition-duration': '250ms'
     }
   },
   text: {
     color: '#fff',
     fontSize: (props) => (props.hover ? '70px' : '60px'),
     fontFamily: 'Ranchers, cursive'
-  },
-  icon: {
-    color: '#fff',
-    fontSize: (props) => (props.hover ? '70px' : '60px'),
-    marginTop: '10px'
   }
 }));
 
-const ReplayButton = (props) => {
-  const { payerRolling, monsterRolling } = props;
+const ConfirmButton = (props) => {
+  const { text, callback, icon } = props;
   const [hover, setHover] = useState(false);
   const classes = useStyles({ ...props, hover });
 
@@ -56,12 +53,12 @@ const ReplayButton = (props) => {
       id="replayBtn"
       elevation={5}
       className={classes.root}
-      onClick={props.startGameProcess}
+      onClick={callback}
       onMouseEnter={handleHoverOn}
       onMouseLeave={handleHoverOff}
     >
-      <Typography className={classes.text}>Replay</Typography>
-      <ReplayIcon className={classes.icon} />
+      <Typography className={classes.text}>{text}</Typography>
+      {icon}
     </Paper>
   );
 };
@@ -69,15 +66,15 @@ const ReplayButton = (props) => {
 const mapStateToProps = (state) => {
   const {
     diceReducer: { payerRolling, monsterRolling },
-    layoutReducer: { displayReplayButton },
+    layoutReducer: { displayConfirmButton },
     characterReducer: { playerChrCode, monsterChrCode }
   } = state;
 
-  return { payerRolling, monsterRolling, displayReplayButton, playerChrCode, monsterChrCode };
+  return { payerRolling, monsterRolling, displayConfirmButton, playerChrCode, monsterChrCode };
 };
 
-const ConnectedReplayButton = connect(mapStateToProps, {
+const ConnectedConfirmButton = connect(mapStateToProps, {
   startGameProcess
-})(ReplayButton);
+})(ConfirmButton);
 
-export default ConnectedReplayButton;
+export default ConnectedConfirmButton;
