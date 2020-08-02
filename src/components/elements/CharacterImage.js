@@ -11,32 +11,45 @@ const useStyles = makeStyles((theme) => ({
     border: '10px solid #ddd',
     boxSizing: 'border-box',
     borderRadius: '50%',
-    backgroundImage: (props) => `url(${props.src})`,
+    backgroundImage: (props) => `url(${props.character.src})`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
-    backgroundPosition: (props) => props.position,
+    backgroundPosition: (props) => props.character.position,
     margin: '50px'
+  },
+  scale: {
+    '-webkit-transform': 'scale(1.2, 1.2)',
+    '-webkit-transition-timing-function': 'ease-out',
+    '-webkit-transition-duration': '700ms',
+    transform: 'scale(1.2, 1.2)'
   }
 }));
 
 const CharacterImage = (props) => {
-  const { code } = props;
+  const { character, playerAttack, monsterAttack } = props;
 
   const classes = useStyles({ ...props });
 
   return (
     <Paper
-      id={`characterImage_${code}`}
+      id={`characterImage_${character.code}`}
       elevation={5}
-      className={clsx('characterImage', classes.root)}
+      // className={clsx('characterImage', classes.root)}
+      className={clsx('characterImage', classes.root, {
+        [classes.scale]:
+          (character.role === 'player' && playerAttack) ||
+          (character.role === 'monster' && monsterAttack)
+      })}
     ></Paper>
   );
 };
 
 const mapStateToProps = (state) => {
-  const {} = state;
+  const {
+    characterReducer: { playerAttack, monsterAttack }
+  } = state;
 
-  return {};
+  return { playerAttack, monsterAttack };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {

@@ -58,7 +58,6 @@ const HealthBar = (props) => {
       <Typography className={classes.number}>{current + '%'}</Typography>
       <Paper
         elevation={5}
-        // className={classes.max}
         className={clsx(classes.max, {
           [classes.yellow]: character.role === scaleHealthBar
         })}

@@ -28,7 +28,6 @@ const BattlePanel = (props) => {
   const playerCharacter = constants.characters.find((chr) => chr.code === playerChrCode);
   const monsterCharacter = constants.characters.find((chr) => chr.code === monsterChrCode);
 
-  console.log('playerCharacter', playerCharacter);
   const classes = useStyles({ playerCharacter });
 
   const playerDom = <ChracterPanel characterGrid={<Player />} character={playerCharacter} />;

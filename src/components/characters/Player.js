@@ -20,7 +20,7 @@ const Player = (props) => {
 
   const healthBar = <HealthBar max={100} current={health} code={code} character={character} />;
   const image = (
-    <CharacterImage src={character.src} code={character.code} position={character.position} />
+    <CharacterImage character={character}/>
   );
 
   return <CharacterGrid healthBar={healthBar} image={image} name={character.name} />;
