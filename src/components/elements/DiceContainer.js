@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     // justifyContent: 'center',
     alignItems: 'center',
-    border: '3px solid black',
+    // border: '3px solid black',
     marginTop: '100px'
   },
   paper: {
@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    border: '3px solid black',
+    // border: '3px solid black',
     backgroundImage: (props) =>
       props.role === 'player' ? `url(/images/chatbox_left.png)` : `url(/images/chatbox_right.png)`,
     backgroundRepeat: 'no-repeat',

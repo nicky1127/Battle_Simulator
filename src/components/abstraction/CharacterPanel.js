@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     width: '600px',
     height: '100%',
-    border: '10px solid black',
+    // border: '10px solid black',
     boxSizing: 'border-box',
     borderRadius: '25px',
     display: 'flex',
