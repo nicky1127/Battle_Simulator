@@ -92,19 +92,19 @@ const AttackEffect = (props) => {
     );
   }
 
-  // return <div>{content}</div>;
-  return (
-    <div id="attackEffect" className={classes.root}>
-      <div
-        className={clsx(classes.effectPlayer, { [classes.horizTranslatePlayer]: playerAttack })}
-      ></div>
-      <div
-        className={clsx(classes.effectMonster, {
-          [classes.horizTranslateMonster]: monsterAttack
-        })}
-      ></div>
-    </div>
-  );
+  return <div>{content}</div>;
+  // return (
+  //   <div id="attackEffect" className={classes.root}>
+  //     <div
+  //       className={clsx(classes.effectPlayer, { [classes.horizTranslatePlayer]: playerAttack })}
+  //     ></div>
+  //     <div
+  //       className={clsx(classes.effectMonster, {
+  //         [classes.horizTranslateMonster]: monsterAttack
+  //       })}
+  //     ></div>
+  //   </div>
+  // );
 };
 
 const mapStateToProps = (state) => {

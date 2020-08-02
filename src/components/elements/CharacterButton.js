@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     width: '180px',
     height: '180px',
-    border: (props) => (props.isSelected ? '10px solid red' : '10px solid #ddd'),
+    border: (props) => (props.isSelected ? '10px solid #fff176' : '10px solid #ddd'),
     boxSizing: 'border-box',
     borderRadius: '5%',
     backgroundImage: (props) => `url(${props.character.src})`,
