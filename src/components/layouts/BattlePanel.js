@@ -12,7 +12,11 @@ const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
     height: '100%',
-    display: 'flex'
+    display: 'flex',
+    backgroundImage: (props) => `url(/images/forest.png)`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    // backgroundPosition: (props) => props.position
   }
 }));
 

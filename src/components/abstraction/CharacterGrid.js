@@ -24,13 +24,13 @@ const CharacterGrid = (props) => {
   const classes = useStyles({ ...props });
 
   return (
-    <Paper id={`CharacterGrid_${name}`} className={clsx('CharacterGrid', classes.root)}>
+    <Box id={`CharacterGrid_${name}`} className={clsx('CharacterGrid', classes.root)}>
       {healthBar}
       {image}
       <Typography variant="h2" className={classes.name}>
         {name}
       </Typography>
-    </Paper>
+    </Box>
   );
 };
 

@@ -7,10 +7,10 @@ import { connect } from 'react-redux';
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '250px',
-    height: '400px',
+    height: '350px',
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'center',
+    // justifyContent: 'center',
     alignItems: 'center',
     border: '3px solid black'
   },
@@ -21,7 +21,12 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    border: '3px solid black',
+    backgroundImage: (props) => `url(/images/chatbox.png)`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    backgroundPosition: (props) => props.position
   },
   text: {
     fontFamily: 'Permanent Marker, cursive',
@@ -41,7 +46,7 @@ const DiceContainer = (props) => {
 
   return (
     <Box id={`diceContainer_${code}`} elevation={5} className={clsx('diceContainer', classes.root)}>
-      <Zoom in={checked}>
+      <Zoom in={true}>
         <Box className={classes.paper}>
           <Typography className={classes.text} variant="h5">
             Total Power

@@ -18,7 +18,7 @@ const data = {
     displayAttackButton: true
   },
   characterReducer: {
-    playerChrCode: 'elsa',
+    playerChrCode: 'pikachu',
     playerHealth: 100,
     playAttack: false,
     monsterChrCode: 'monster',
