@@ -11,15 +11,16 @@ const data = {
     round: 0,
     roundWinner: null,
     winner: null,
-    stage: 'start_play'
+    stage: 'battle'
   },
   layoutReducer: {
     displayAttackText: false,
     displayAttackButton: true,
-    displayAttackEffect: null
+    displayAttackEffect: null,
+    scaleHealthBar: null
   },
   characterReducer: {
-    playerChrCode: null,
+    playerChrCode: 'pikachu',
     playerHealth: 100,
     playerAttack: false,
     monsterChrCode: 'monster',

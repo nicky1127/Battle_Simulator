@@ -21,6 +21,10 @@ const reducer = (state = initialState, action) => {
     return { ...state, displayAttackEffect: action.payload };
   }
 
+  if (action.type === types.SCALE_HEALTH_BAR) {
+    return { ...state, scaleHealthBar: action.payload };
+  }
+
   if (action.type === START_GAME_PROCESS) {
     return { ...state, ...defaultState.layoutReducer };
   }

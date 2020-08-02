@@ -19,12 +19,12 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '20px',
     flexBasis: '70px',
     fontFamily: 'Permanent Marker, cursive',
-    color: '#f5f5f5',
+    color: '#f5f5f5'
     // textShadow: '4px 4px #9e9e9e'
   },
   max: {
-    width: '270px',
-    height: '30px',
+    width: '80%',
+    height: '85%',
     borderRadius: '5px'
   },
   health: {
@@ -32,18 +32,37 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
     width: (props) => props.current + '%',
     borderRadius: '5px'
+  },
+  scale: {
+    '-webkit-transform': 'scale(1.1, 1.3)',
+    '-webkit-transition-timing-function': 'ease-out',
+    '-webkit-transition-duration': '250ms'
+  },
+  yellow: {
+    backgroundColor: '#fff176'
   }
 }));
 
 const HealthBar = (props) => {
-  const { code, current } = props;
+  const { code, current, character, scaleHealthBar } = props;
 
   const classes = useStyles({ ...props });
 
   return (
-    <Box id={`healthbar_${code}`} className={clsx('healthbar', classes.root)}>
+    <Box
+      id={`healthbar_${code}`}
+      className={clsx('healthbar', classes.root, {
+        [classes.scale]: character.role === scaleHealthBar
+      })}
+    >
       <Typography className={classes.number}>{current + '%'}</Typography>
-      <Paper elevation={5} className={classes.max}>
+      <Paper
+        elevation={5}
+        // className={classes.max}
+        className={clsx(classes.max, {
+          [classes.yellow]: character.role === scaleHealthBar
+        })}
+      >
         <Box className={classes.health} />
       </Paper>
     </Box>
@@ -51,9 +70,11 @@ const HealthBar = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  const {} = state;
+  const {
+    layoutReducer: { scaleHealthBar }
+  } = state;
 
-  return {};
+  return { scaleHealthBar };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {

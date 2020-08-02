@@ -68,9 +68,11 @@ export const playerAttackProcess = (dispatch, monsterHealth) => {
     .then(() => delay(200))
     .then(() => dispatch(actions.character.setPlayerAttack(true)))
     .then(() => delay(1000))
+    .then(() => dispatch(actions.layout.scaleHealthBar('monster')))
     .then(() => dispatch(actions.character.setMonsterHealth(monsterHealth)))
     .then(() => delay(500))
     .then(() => dispatch(actions.layout.displayAttackEffect(null)))
+    .then(() => dispatch(actions.layout.scaleHealthBar(null)))
     .then(() => delay(500))
     .then(() => dispatch(actions.character.setPlayerAttack(false)));
 };
@@ -81,9 +83,11 @@ export const monsterAttackProcess = (dispatch, playerHealth) => {
     .then(() => delay(200))
     .then(() => dispatch(actions.character.setMonsterAttack(true)))
     .then(() => delay(1000))
+    .then(() => dispatch(actions.layout.scaleHealthBar('player')))
     .then(() => dispatch(actions.character.setPlayerHealth(playerHealth)))
     .then(() => delay(500))
     .then(() => dispatch(actions.layout.displayAttackEffect(null)))
+    .then(() => dispatch(actions.layout.scaleHealthBar(null)))
     .then(() => delay(500))
     .then(() => dispatch(actions.character.setMonsterAttack(false)));
 };
@@ -133,6 +137,7 @@ export const updatinghealthProcess = (store) => (next) => (action) => {
             // dispatch(actions.status.setGameStage('finish'));
           }
       })
+      .then(() => delay(500))
       .then(() => dispatch(actions.layout.displayAttackBtn(true)));
   }
   return next(action);

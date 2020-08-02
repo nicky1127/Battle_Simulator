@@ -15,10 +15,16 @@ export const displayAttackEffect = (payload) => {
   return obj;
 };
 
+export const scaleHealthBar = (payload) => {
+  const obj = { type: types.SCALE_HEALTH_BAR, payload };
+  return obj;
+};
+
 const actions = {
   displayAttackText,
   displayAttackBtn,
-  displayAttackEffect
+  displayAttackEffect,
+  scaleHealthBar
 };
 
 export default actions;
