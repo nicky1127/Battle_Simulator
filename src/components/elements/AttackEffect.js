@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
     height: (props) => props.playerCharacter.attack.before.height,
     position: 'absolute',
     left: '0',
+    transform: (props) => props.playerCharacter.attack.rotate,
     border: '3px solid black',
     backgroundImage: (props) => `${props.playerCharacter.attack.image}`,
     backgroundRepeat: 'no-repeat',
@@ -45,8 +46,8 @@ const useStyles = makeStyles((theme) => ({
     '-o-transition': '1s',
     transition: '1s',
     transitionDelay: '0.5s',
-    width: '350px',
-    height: '250px',
+    width: (props) => props.playerCharacter.attack.after.width,
+    height: (props) => props.playerCharacter.attack.after.height,
     left: '70%'
   },
   horizTranslateMonster: {

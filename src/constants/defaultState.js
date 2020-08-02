@@ -19,7 +19,7 @@ const data = {
     displayAttackEffect: null
   },
   characterReducer: {
-    playerChrCode: 'ironman',
+    playerChrCode: 'elsa',
     playerHealth: 50,
     playerAttack: false,
     monsterChrCode: 'monster',

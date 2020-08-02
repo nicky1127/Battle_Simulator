@@ -45,7 +45,16 @@ const characters = [
     position: '50% 50%',
     background: '/images/snow.jpg',
     attack: {
-      image: '/images/rocket.png'
+      image: 'url(/images/ice.png)',
+      rotate: 'rotate(30deg)',
+      before:{
+        width:'350px',
+        height:'250px'
+      },
+      after:{
+        width:'80%',
+        height:'400px'
+      }
     }
   },
   {
