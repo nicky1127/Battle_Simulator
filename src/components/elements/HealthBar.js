@@ -18,11 +18,14 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     fontSize: '20px',
     flexBasis: '70px',
-    fontFamily: 'Permanent Marker, cursive'
+    fontFamily: 'Permanent Marker, cursive',
+    color: '#f5f5f5',
+    // textShadow: '4px 4px #9e9e9e'
   },
   max: {
     width: '270px',
-    height: '30px'
+    height: '30px',
+    borderRadius: '5px'
   },
   health: {
     backgroundColor: 'red',

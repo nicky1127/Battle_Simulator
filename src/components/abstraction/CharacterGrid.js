@@ -14,7 +14,9 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column'
   },
   name: {
-    'font-family': 'Ranchers, cursive'
+    'font-family': 'Ranchers, cursive',
+    color: '#f5f5f5',
+    textShadow: '4px 4px #9e9e9e'
   }
 }));
 
