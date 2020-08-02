@@ -10,9 +10,15 @@ export const displayAttackBtn = (payload) => {
   return obj;
 };
 
+export const displayAttackEffect = (payload) => {
+  const obj = { type: types.DISPLAY_ATTACK_EFFECT, payload };
+  return obj;
+};
+
 const actions = {
   displayAttackText,
-  displayAttackBtn
+  displayAttackBtn,
+  displayAttackEffect
 };
 
 export default actions;

@@ -26,6 +26,8 @@ export const setPlayerChrCode = (payload) => {
 };
 
 const actions = {
+  setPlayerAttack,
+  setMonsterAttack,
   setPlayerHealth,
   setMonsterHealth,
   setPlayerChrCode

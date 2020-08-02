@@ -17,6 +17,10 @@ const reducer = (state = initialState, action) => {
     return { ...state, displayAttackButton: action.payload };
   }
 
+  if (action.type === types.DISPLAY_ATTACK_EFFECT) {
+    return { ...state, displayAttackEffect: action.payload };
+  }
+
   if (action.type === START_GAME_PROCESS) {
     return { ...state, ...defaultState.layoutReducer };
   }

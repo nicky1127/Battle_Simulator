@@ -15,14 +15,15 @@ const data = {
   },
   layoutReducer: {
     displayAttackText: false,
-    displayAttackButton: true
+    displayAttackButton: true,
+    displayAttackEffect: null
   },
   characterReducer: {
     playerChrCode: 'pikachu',
-    playerHealth: 100,
-    playAttack: false,
+    playerHealth: 50,
+    playerAttack: false,
     monsterChrCode: 'monster',
-    monsterHealth: 100,
+    monsterHealth: 50,
     monsterAttack: false
   }
 };

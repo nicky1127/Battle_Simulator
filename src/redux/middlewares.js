@@ -62,6 +62,32 @@ export const rollingDiceProcess = (store) => (next) => (action) => {
   return next(action);
 };
 
+export const playerAttackProcess = (dispatch, monsterHealth) => {
+  return Promise.resolve()
+    .then(() => dispatch(actions.layout.displayAttackEffect('player')))
+    .then(() => delay(500))
+    .then(() => dispatch(actions.character.setPlayerAttack(true)))
+    .then(() => delay(1000))
+    .then(() => dispatch(actions.character.setMonsterHealth(monsterHealth)))
+    .then(() => delay(500))
+    .then(() => dispatch(actions.layout.displayAttackEffect(null)))
+    .then(() => delay(500))
+    .then(() => dispatch(actions.character.setPlayerAttack(false)));
+};
+
+export const monsterAttackProcess = (dispatch, playerHealth) => {
+  return Promise.resolve()
+    .then(() => dispatch(actions.layout.displayAttackEffect('monster')))
+    .then(() => delay(500))
+    .then(() => dispatch(actions.character.setMonsterAttack(true)))
+    .then(() => delay(1000))
+    .then(() => dispatch(actions.character.setPlayerHealth(playerHealth)))
+    .then(() => delay(500))
+    .then(() => dispatch(actions.layout.displayAttackEffect(null)))
+    .then(() => delay(500))
+    .then(() => dispatch(actions.character.setMonsterAttack(false)));
+};
+
 export const updatinghealthProcess = (store) => (next) => (action) => {
   const { dispatch } = store;
   const { playerHealth, monsterHealth } = store.getState().characterReducer;
@@ -73,19 +99,38 @@ export const updatinghealthProcess = (store) => (next) => (action) => {
       .then(() => {
         if (scoreDiff > 0) {
           if (monsterHealth - absScoreDiff > 0) {
-            return dispatch(actions.character.setMonsterHealth(monsterHealth - absScoreDiff));
+            return playerAttackProcess(dispatch, monsterHealth - absScoreDiff);
+
+            // Promise.resolve()
+            //   .then(() => dispatch(actions.character.setPlayerAttack(true)))
+            //   .then(() => delay(1000))
+            //   .then(() =>
+            //     dispatch(actions.character.setMonsterHealth(monsterHealth - absScoreDiff))
+            //   )
+            //   .then(() => delay(500))
+            //   .then(() => dispatch(actions.character.setPlayerAttack(false)));
           } else {
-            dispatch(actions.character.setMonsterHealth(0));
-            dispatch(actions.status.setGameWinner('player'));
-            dispatch(actions.status.setGameStage('finish'));
+            return playerAttackProcess(dispatch, 0)
+              .then(() => dispatch(actions.status.setGameWinner('player')))
+              .then(() => dispatch(actions.status.setGameStage('finish')));
+
+            // dispatch(actions.character.setMonsterHealth(0));
+            // dispatch(actions.status.setGameWinner('player'));
+            // dispatch(actions.status.setGameStage('finish'));
           }
         } else if (scoreDiff < 0)
           if (playerHealth - absScoreDiff > 0) {
-            return dispatch(actions.character.setPlayerHealth(playerHealth - absScoreDiff));
+            return monsterAttackProcess(dispatch, playerHealth - absScoreDiff);
+            // dispatch(actions.character.setMonsterAttack(true));
+            // dispatch(actions.character.setPlayerHealth(playerHealth - absScoreDiff));
           } else {
-            dispatch(actions.character.setPlayerHealth(0));
-            dispatch(actions.status.setGameWinner('monster'));
-            dispatch(actions.status.setGameStage('finish'));
+            return monsterAttackProcess(dispatch, 0)
+              .then(() => dispatch(actions.status.setGameWinner('monster')))
+              .then(() => dispatch(actions.status.setGameStage('finish')));
+
+            // dispatch(actions.character.setPlayerHealth(0));
+            // dispatch(actions.status.setGameWinner('monster'));
+            // dispatch(actions.status.setGameStage('finish'));
           }
       })
       .then(() => dispatch(actions.layout.displayAttackBtn(true)));

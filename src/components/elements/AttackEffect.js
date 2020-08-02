@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center'
   },
-  effect: {
+  effectPlayer: {
     width: '350px',
     height: '250px',
     position: 'absolute',
@@ -26,44 +26,82 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: 'contain',
     backgroundPosition: '0 50%'
   },
+  effectMonster: {
+    width: '350px',
+    height: '250px',
+    position: 'absolute',
+    right: '0',
+    border: '3px solid black',
+    backgroundImage: 'url(/images/thunder.png)',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'contain',
+    backgroundPosition: '0 50%'
+  },
 
-  horizTranslate: {
-    '-webkit-transition': '3s',
-    '-moz-transition': '3s',
-    '-ms-transition': '3s',
-    '-o-transition': '3s',
-    transition: '3s',
+  horizTranslatePlayer: {
+    '-webkit-transition': '1s',
+    '-moz-transition': '1s',
+    '-ms-transition': '1s',
+    '-o-transition': '1s',
+    transition: '1s',
+    transitionDelay: '0.5s',
     left: '50%'
+  },
+  horizTranslateMonster: {
+    '-webkit-transition': '1s',
+    '-moz-transition': '1s',
+    '-ms-transition': '1s',
+    '-o-transition': '1s',
+    transition: '1s',
+    transitionDelay: '0.5s',
+    right: '50%'
   }
 }));
 
 const AttackEffect = (props) => {
-  const { playerScore, monsterScore, displayAttackEffect } = props;
+  const { playerScore, monsterScore, displayAttackEffect, playerAttack, monsterAttack } = props;
   const scoreDiff = playerScore - monsterScore;
 
   const classes = useStyles({ ...props, scoreDiff });
   const [checked, setChecked] = useState(false);
 
-  useEffect(() => {
-    displayAttackEffect ? setChecked(true) : setChecked(false);
-  }, [displayAttackEffect]);
+  let content;
 
-  return (
-    <Fade in={true} timeout={1000}>
+  if (displayAttackEffect === 'player') {
+    content = (
       <div id="attackEffect" className={classes.root}>
-        <div className={clsx(classes.effect, { [classes.horizTranslate]: true })}></div>
+        <div
+          className={clsx(classes.effectPlayer, { [classes.horizTranslatePlayer]: playerAttack })}
+        ></div>
       </div>
-    </Fade>
-  );
+    );
+  } else if (displayAttackEffect === 'monster') {
+    content = (
+      <div id="attackEffect" className={classes.root}>
+        <div
+          className={clsx(classes.effectMonster, {
+            [classes.horizTranslateMonster]: monsterAttack
+          })}
+        ></div>
+      </div>
+    );
+  }
+
+  // useEffect(() => {
+  //   displayAttackEffect ? setChecked(true) : setChecked(false);
+  // }, [displayAttackEffect]);
+
+  return <div>{content}</div>;
 };
 
 const mapStateToProps = (state) => {
   const {
     diceReducer: { playerScore, monsterScore },
-    layoutReducer: { displayAttackEffect }
+    layoutReducer: { displayAttackEffect },
+    characterReducer: { playerAttack, monsterAttack }
   } = state;
 
-  return { playerScore, monsterScore, displayAttackEffect };
+  return { playerScore, monsterScore, displayAttackEffect, playerAttack, monsterAttack };
 };
 
 const ConnectedAttackEffect = connect(mapStateToProps)(AttackEffect);
