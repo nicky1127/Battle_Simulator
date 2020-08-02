@@ -16,12 +16,12 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center'
   },
   effectPlayer: {
-    width: '200px',
-    height: '100px',
+    width: (props) => props.playerCharacter.attack.before.width,
+    height: (props) => props.playerCharacter.attack.before.height,
     position: 'absolute',
     left: '0',
     border: '3px solid black',
-    backgroundImage: 'url(/images/thunder.png)',
+    backgroundImage: (props) => `${props.playerCharacter.attack.image}`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'contain',
     backgroundPosition: '0 50%'
@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
     position: 'absolute',
     right: '0',
     border: '3px solid black',
-    backgroundImage: 'url(/images/fire.png)',
+    backgroundImage: (props) => `url(${props.monsterCharacter.attack.image})`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'contain',
     backgroundPosition: '0 50%'
@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
     transitionDelay: '0.5s',
     width: '350px',
     height: '250px',
-    left: '50%'
+    left: '70%'
   },
   horizTranslateMonster: {
     '-webkit-transition': '1s',
@@ -56,17 +56,16 @@ const useStyles = makeStyles((theme) => ({
     '-o-transition': '1s',
     transition: '1s',
     transitionDelay: '0.5s',
-    width: '80%',
+    width: '90%',
     height: '500px',
-    right: '8%'
+    right: '5%'
   }
 }));
 
 const AttackEffect = (props) => {
-  const { playerScore, monsterScore, displayAttackEffect, playerAttack, monsterAttack } = props;
-  const scoreDiff = playerScore - monsterScore;
+  const { displayAttackEffect, playerAttack, monsterAttack } = props;
 
-  const classes = useStyles({ ...props, scoreDiff });
+  const classes = useStyles({ ...props });
 
   let content;
 
@@ -74,7 +73,9 @@ const AttackEffect = (props) => {
     content = (
       <div id="attackEffect" className={classes.root}>
         <div
-          className={clsx(classes.effectPlayer, { [classes.horizTranslatePlayer]: playerAttack })}
+          className={clsx(classes.effectPlayer, {
+            [classes.horizTranslatePlayer]: playerAttack
+          })}
         ></div>
       </div>
     );
@@ -107,12 +108,11 @@ const AttackEffect = (props) => {
 
 const mapStateToProps = (state) => {
   const {
-    diceReducer: { playerScore, monsterScore },
     layoutReducer: { displayAttackEffect },
     characterReducer: { playerAttack, monsterAttack }
   } = state;
 
-  return { playerScore, monsterScore, displayAttackEffect, playerAttack, monsterAttack };
+  return { displayAttackEffect, playerAttack, monsterAttack };
 };
 
 const ConnectedAttackEffect = connect(mapStateToProps)(AttackEffect);

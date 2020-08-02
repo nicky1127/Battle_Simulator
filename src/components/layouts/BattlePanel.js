@@ -36,7 +36,7 @@ const BattlePanel = (props) => {
 
   return (
     <Box id="battlePanel" className={classes.root}>
-      <AttackEffect />
+      <AttackEffect playerCharacter={playerCharacter} monsterCharacter={monsterCharacter} />
       {playerDom}
       <AttackPanel />
       {monsterDom}
