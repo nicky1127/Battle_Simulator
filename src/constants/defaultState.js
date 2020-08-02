@@ -20,10 +20,10 @@ const data = {
   },
   characterReducer: {
     playerChrCode: null,
-    playerHealth: 50,
+    playerHealth: 100,
     playerAttack: false,
     monsterChrCode: 'monster',
-    monsterHealth: 50,
+    monsterHealth: 100,
     monsterAttack: false
   }
 };

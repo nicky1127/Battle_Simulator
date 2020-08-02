@@ -43,17 +43,20 @@ const GuidePanel = (props) => {
 
   const title = 'How You Play';
 
-  const text = `
-    Click "Attack" button in the middle of the screen to fire your move.
-    Each of you then rolls two dice and the one having the biggest number of sum can decrease the other's
-    health with the amount of the difference of total numbers. The winner will be the one to decrease the other's health down to 0.
-    Go on! Have your try! 
+  const text1 = `
+    Click the "Attack" button in the middle of the screen to fire your move.
+    You and your opponent then roll the dice and the one having the highest number decreases the others
+    health with the difference between the two scores. The winner will be the one to decrease the others health down to zero.
     `;
+
+  const text2 = `Go on! Have a try! `;
 
   return (
     <Box id="guidePanel" className={classes.root}>
       <Typography className={classes.title}>{title}</Typography>
-      <Typography classes={{ root: classes.text }}>{text}</Typography>
+      <Typography classes={{ root: classes.text }}>{text1}</Typography>
+      <br />
+      <Typography classes={{ root: classes.text }}>{text2}</Typography>
       <ConfirmButton
         text="Next"
         width="150px"

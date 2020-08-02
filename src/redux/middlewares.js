@@ -65,7 +65,7 @@ export const rollingDiceProcess = (store) => (next) => (action) => {
 export const playerAttackProcess = (dispatch, monsterHealth) => {
   return Promise.resolve()
     .then(() => dispatch(actions.layout.displayAttackEffect('player')))
-    .then(() => delay(500))
+    .then(() => delay(200))
     .then(() => dispatch(actions.character.setPlayerAttack(true)))
     .then(() => delay(1000))
     .then(() => dispatch(actions.character.setMonsterHealth(monsterHealth)))
@@ -78,7 +78,7 @@ export const playerAttackProcess = (dispatch, monsterHealth) => {
 export const monsterAttackProcess = (dispatch, playerHealth) => {
   return Promise.resolve()
     .then(() => dispatch(actions.layout.displayAttackEffect('monster')))
-    .then(() => delay(500))
+    .then(() => delay(200))
     .then(() => dispatch(actions.character.setMonsterAttack(true)))
     .then(() => delay(1000))
     .then(() => dispatch(actions.character.setPlayerHealth(playerHealth)))

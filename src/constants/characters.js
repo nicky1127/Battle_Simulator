@@ -13,8 +13,8 @@ const characters = [
         height:'100px'
       },
       after:{
-        width:'80%',
-        height:'500px'
+        width:'40%',
+        height:'400px'
       }
     }
   },
@@ -32,7 +32,7 @@ const characters = [
         height:'200px'
       },
       after:{
-        width:'90%',
+        width:'50%',
         height:'300px'
       }
     }
@@ -52,7 +52,7 @@ const characters = [
         height:'250px'
       },
       after:{
-        width:'80%',
+        width:'70%',
         height:'400px'
       }
     }
