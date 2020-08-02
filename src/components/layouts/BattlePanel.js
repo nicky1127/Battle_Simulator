@@ -13,9 +13,9 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     height: '100%',
     display: 'flex',
-    backgroundImage: (props) => `url(/images/forest.png)`,
+    backgroundImage: (props) => `url(${props.playerCharacter.background})`,
     backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
+    backgroundSize: 'cover'
     // backgroundPosition: (props) => props.position
   }
 }));
@@ -23,10 +23,11 @@ const useStyles = makeStyles((theme) => ({
 const BattlePanel = (props) => {
   const { playerChrCode, monsterChrCode } = props;
 
-  const classes = useStyles();
-
   const playerCharacter = constants.characters.find((chr) => chr.code === playerChrCode);
   const monsterCharacter = constants.characters.find((chr) => chr.code === monsterChrCode);
+
+  console.log('playerCharacter', playerCharacter);
+  const classes = useStyles({ playerCharacter });
 
   const playerDom = <ChracterPanel characterGrid={<Player />} character={playerCharacter} />;
   const monsterDom = <ChracterPanel characterGrid={<Monster />} character={monsterCharacter} />;
