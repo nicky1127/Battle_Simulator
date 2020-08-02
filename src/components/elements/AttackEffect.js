@@ -16,8 +16,8 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center'
   },
   effectPlayer: {
-    width: '250px',
-    height: '150px',
+    width: '200px',
+    height: '100px',
     position: 'absolute',
     left: '0',
     border: '3px solid black',
@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
     position: 'absolute',
     right: '0',
     border: '3px solid black',
-    backgroundImage: 'url(/images/thunder.png)',
+    backgroundImage: 'url(/images/fire.png)',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'contain',
     backgroundPosition: '0 50%'
@@ -56,9 +56,9 @@ const useStyles = makeStyles((theme) => ({
     '-o-transition': '1s',
     transition: '1s',
     transitionDelay: '0.5s',
-    width: '350px',
-    height: '250px',
-    right: '50%'
+    width: '80%',
+    height: '500px',
+    right: '8%'
   }
 }));
 
