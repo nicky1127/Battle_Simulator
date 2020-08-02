@@ -6,18 +6,18 @@ import { connect } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: '44%',
+    width: '55%',
     height: '300px',
     top: '25%',
-    left: '28%',
+    left: '22%',
     position: 'absolute',
     border: '3px solid black',
     display: 'flex',
     alignItems: 'center'
   },
   effectPlayer: {
-    width: '350px',
-    height: '250px',
+    width: '250px',
+    height: '150px',
     position: 'absolute',
     left: '0',
     border: '3px solid black',
@@ -27,8 +27,8 @@ const useStyles = makeStyles((theme) => ({
     backgroundPosition: '0 50%'
   },
   effectMonster: {
-    width: '350px',
-    height: '250px',
+    width: '250px',
+    height: '150px',
     position: 'absolute',
     right: '0',
     border: '3px solid black',
@@ -45,6 +45,8 @@ const useStyles = makeStyles((theme) => ({
     '-o-transition': '1s',
     transition: '1s',
     transitionDelay: '0.5s',
+    width: '350px',
+    height: '250px',
     left: '50%'
   },
   horizTranslateMonster: {
@@ -54,6 +56,8 @@ const useStyles = makeStyles((theme) => ({
     '-o-transition': '1s',
     transition: '1s',
     transitionDelay: '0.5s',
+    width: '350px',
+    height: '250px',
     right: '50%'
   }
 }));
@@ -63,7 +67,6 @@ const AttackEffect = (props) => {
   const scoreDiff = playerScore - monsterScore;
 
   const classes = useStyles({ ...props, scoreDiff });
-  const [checked, setChecked] = useState(false);
 
   let content;
 
@@ -87,11 +90,19 @@ const AttackEffect = (props) => {
     );
   }
 
-  // useEffect(() => {
-  //   displayAttackEffect ? setChecked(true) : setChecked(false);
-  // }, [displayAttackEffect]);
-
-  return <div>{content}</div>;
+  // return <div>{content}</div>;
+  return (
+    <div id="attackEffect" className={classes.root}>
+      <div
+        className={clsx(classes.effectPlayer, { [classes.horizTranslatePlayer]: playerAttack })}
+      ></div>
+      <div
+        className={clsx(classes.effectMonster, {
+          [classes.horizTranslateMonster]: monsterAttack
+        })}
+      ></div>
+    </div>
+  );
 };
 
 const mapStateToProps = (state) => {
