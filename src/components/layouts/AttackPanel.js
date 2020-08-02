@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'flex-start',
-    paddingTop:'200px'
+    paddingTop:'150px'
   },
 }));
 

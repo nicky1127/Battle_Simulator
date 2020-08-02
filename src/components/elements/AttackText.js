@@ -7,30 +7,33 @@ import { connect } from 'react-redux';
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '350px',
-    margin: '0',
+    marginBottom: '50px',
     padding: '0',
-    height: '300px',
-    border: '10px solid black',
-    transform: 'rotate(-20deg)'
+    height: '250px',
+    display: 'flex',
+    alignItems: 'center',
+    backgroundColor: 'rgba(255, 235, 59,0.6)',
+    boxShadow: '0 0 0 10px #2962ff, 0 0 5px 15px #2196f3',
+    borderRadius: '15px'
   },
   text: {
+    color: '#333',
     fontFamily: 'Permanent Marker, cursive',
     textAlign: 'center',
-    fontSize: '80px'
+    fontSize: (props) => (props.scoreDiff < 0 ? '60px' : '80px')
   }
 }));
 
 const Attacktext = (props) => {
   const { playerScore, monsterScore, displayAttackText } = props;
+  const scoreDiff = playerScore - monsterScore;
 
-  const classes = useStyles({ ...props });
+  const classes = useStyles({ ...props, scoreDiff });
   const [checked, setChecked] = useState(false);
 
   useEffect(() => {
     displayAttackText ? setChecked(true) : setChecked(false);
   }, [displayAttackText]);
-
-  const scoreDiff = playerScore - monsterScore;
 
   let text;
 
@@ -43,24 +46,17 @@ const Attacktext = (props) => {
   }
 
   return (
-    <div id="attackText" className={classes.root}>
-      <Fade in={checked} timeout={1000}>
+    <Fade in={checked} timeout={1000}>
+      <div id="attackText" className={classes.root}>
         <Typography className={classes.text}>{text}</Typography>
-      </Fade>
-    </div>
+      </div>
+    </Fade>
   );
 };
 
 const mapStateToProps = (state) => {
   const {
-    diceReducer: {
-      playerScore,
-      monsterScore,
-      playerRolling,
-      monsterRolling,
-      displayPlayerScore,
-      displayMonsterScore
-    },
+    diceReducer: { playerScore, monsterScore },
     layoutReducer: { displayAttackText }
   } = state;
 

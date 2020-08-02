@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: (props) => (props.character.role === 'monster' ? 'row-reverse' : 'row'),
     justifyContent: (props) => (props.character.role === 'monster' ? 'flex-end' : 'flex-start'),
-    alignItems: 'center',
+    // alignItems: 'center',
     marginLeft: (props) => props.character.role === 'monster' && 'auto'
   }
 }));

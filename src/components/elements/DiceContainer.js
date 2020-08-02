@@ -12,20 +12,21 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     // justifyContent: 'center',
     alignItems: 'center',
-    border: '3px solid black'
+    border: '3px solid black',
+    marginTop: '100px'
   },
   paper: {
     width: '200px',
-    height: '100px',
-    backgroundColor: '#ffeb3b',
+    height: '200px',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
     border: '3px solid black',
-    backgroundImage: (props) => `url(/images/chatbox.png)`,
+    backgroundImage: (props) =>
+      props.role === 'player' ? `url(/images/chatbox_left.png)` : `url(/images/chatbox_right.png)`,
     backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
+    backgroundSize: 'contain',
     backgroundPosition: (props) => props.position
   },
   text: {
@@ -36,17 +37,17 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const DiceContainer = (props) => {
-  const classes = useStyles({ ...props });
-  const { code, score, isRolling, displayScore } = props;
+  const { code, score, displayScore } = props;
   const [checked, setChecked] = useState(false);
 
+  const classes = useStyles({ ...props });
   useEffect(() => {
     displayScore ? setChecked(true) : setChecked(false);
   }, [displayScore]);
 
   return (
     <Box id={`diceContainer_${code}`} elevation={5} className={clsx('diceContainer', classes.root)}>
-      <Zoom in={true}>
+      <Zoom in={checked}>
         <Box className={classes.paper}>
           <Typography className={classes.text} variant="h5">
             Total Power
