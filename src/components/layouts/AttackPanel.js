@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Box } from '@material-ui/core';
 import { connect } from 'react-redux';
 import AttackButton from 'components/elements/AttackButton';
-import Attacktext from 'components/elements/AttackText';
+import AttackText from 'components/elements/AttackText';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -14,8 +14,8 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'flex-start',
-    paddingTop:'150px'
-  },
+    paddingTop: '150px'
+  }
 }));
 
 const AttackPanel = (props) => {
@@ -25,7 +25,7 @@ const AttackPanel = (props) => {
 
   return (
     <Box id="attackPanel" className={classes.root}>
-      <Attacktext/>
+      <AttackText />
       {displayAttackButton && <AttackButton />}
     </Box>
   );
@@ -33,7 +33,7 @@ const AttackPanel = (props) => {
 
 const mapStateToProps = (state) => {
   const {
-    layoutReducer: {displayAttackButton}
+    layoutReducer: { displayAttackButton }
   } = state;
 
   return { displayAttackButton };

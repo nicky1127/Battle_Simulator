@@ -7,12 +7,14 @@ import Player from 'components/characters/Player';
 import Monster from 'components/characters/Monster';
 import AttackPanel from 'components/layouts/AttackPanel';
 import constants from 'constants/index';
+import AttackEffect from 'components/elements/AttackEffect';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
     height: '100%',
     display: 'flex',
+    position: 'relative',
     backgroundImage: (props) => `url(${props.playerCharacter.background})`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover'
@@ -34,6 +36,7 @@ const BattlePanel = (props) => {
 
   return (
     <Box id="battlePanel" className={classes.root}>
+      <AttackEffect />
       {playerDom}
       <AttackPanel />
       {monsterDom}
