@@ -7,7 +7,7 @@ import { setGameStage } from 'redux/_actions/status';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: '65%',
+    width: '75%',
     height: '80%',
     backgroundColor: '#7986cb',
     display: 'flex',
@@ -19,11 +19,6 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: '15px',
     paddingTop: '30px'
   },
-  characterContainer: {
-    display: 'flex',
-    justifyContent: 'center',
-    height: '270px'
-  },
   title: {
     fontFamily: 'Luckiest Guy, cursive',
     fontSize: '50px'
@@ -31,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
   text: {
     fontFamily: 'Permanent Marker, cursive',
     display: 'block',
-    width: '80%',
+    width: '85%',
     height: '70%',
     fontSize: '30px'
   }
@@ -51,12 +46,16 @@ const GuidePanel = (props) => {
 
   const text2 = `Go on! Have a try! `;
 
+  const text3 = `Note: Scores will be multiplied by 10 for speeding up the game. `;
+
   return (
     <Box id="guidePanel" className={classes.root}>
       <Typography className={classes.title}>{title}</Typography>
       <Typography classes={{ root: classes.text }}>{text1}</Typography>
       <br />
       <Typography classes={{ root: classes.text }}>{text2}</Typography>
+      <br />
+      <Typography classes={{ root: classes.text }}>{text3}</Typography>
       <ConfirmButton
         text="Next"
         width="150px"
