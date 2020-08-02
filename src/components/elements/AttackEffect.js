@@ -19,11 +19,21 @@ const useStyles = makeStyles((theme) => ({
     width: '350px',
     height: '250px',
     position: 'absolute',
+    left: '0',
     border: '3px solid black',
     backgroundImage: 'url(/images/thunder.png)',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'contain',
     backgroundPosition: '0 50%'
+  },
+
+  horizTranslate: {
+    '-webkit-transition': '3s',
+    '-moz-transition': '3s',
+    '-ms-transition': '3s',
+    '-o-transition': '3s',
+    transition: '3s',
+    left: '50%'
   }
 }));
 
@@ -41,7 +51,7 @@ const AttackEffect = (props) => {
   return (
     <Fade in={true} timeout={1000}>
       <div id="attackEffect" className={classes.root}>
-        <div className={classes.effect}></div>
+        <div className={clsx(classes.effect, { [classes.horizTranslate]: true })}></div>
       </div>
     </Fade>
   );
